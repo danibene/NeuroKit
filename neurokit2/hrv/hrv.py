@@ -103,7 +103,7 @@ def hrv(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False
     out.append(hrv_time(data, rri_time=rri_time, data_format=data_format, sampling_rate=sampling_rate,
                         check_successive=check_successive, **kwargs))
     out.append(hrv_frequency(data, rri_time=rri_time, data_format=data_format, sampling_rate=sampling_rate,
-                             check_successive=check_successive, **kwargs))
+                             **kwargs))
     out.append(hrv_nonlinear(data, rri_time=rri_time, data_format=data_format, sampling_rate=sampling_rate,
                              check_successive=check_successive, **kwargs))
 
