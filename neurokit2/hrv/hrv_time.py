@@ -6,24 +6,38 @@ import scipy.stats
 
 from ..stats import mad, summary_plot
 from .hrv_utils import _hrv_get_rri, _hrv_sanitize_input
+from ..misc import find_successive_intervals
 
 
-def hrv_time(peaks, sampling_rate=1000, show=False, **kwargs):
+def hrv_time(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False, check_successive=True,
+                  **kwargs):
     """Computes time-domain indices of Heart Rate Variability (HRV).
 
      See references for details.
 
     Parameters
     ----------
-    peaks : dict
-        Samples at which cardiac extrema (i.e., R-peaks, systolic peaks) occur.
+    data : dict, list or ndarray
+        If data format is peaks, Samples at which cardiac extrema (i.e., R-peaks, systolic peaks) occur.
         Can be a list of indices or the output(s) of other functions such as ecg_peaks,
         ppg_peaks, ecg_process or bio_process.
+        If data format is R-R intervals, list or ndarray of R-R intervals.
+    rri_time : list or ndarray, optional
+        Time points corresponding to R-R intervals, in seconds.
+    data_format : str, optional
+        If "peaks", the R-R intervals are computed with hrv_get_rri.
+        If "rri", the input is assumed to already be R-R intervals and they are not computed.
     sampling_rate : int, optional
         Sampling rate (Hz) of the continuous cardiac signal in which the peaks occur. Should be at
         least twice as high as the highest frequency in vhf. By default 1000.
-    show : bool
-        If True, will plot the distribution of R-R intervals.
+    show : bool, optional
+        If True, will return a Poincaré plot, a scattergram, which plots each RR interval against the
+        next successive one. The ellipse centers around the average RR interval. By default False.
+    check_successive: bool, optional
+        If True, will remove non-successive differences based on whether the R-R intervals match the corresponding
+        timepoints or if there are NaN values.
+    **kwargs
+        Other arguments to be passed into `hrv_time_show()`.
 
     Returns
     -------
@@ -88,14 +102,24 @@ def hrv_time(peaks, sampling_rate=1000, show=False, **kwargs):
     Frontiers in public health, 5, 258.
 
     """
-    # Sanitize input
-    peaks = _hrv_sanitize_input(peaks)
-    if isinstance(peaks, tuple):  # Detect actual sampling rate
-        peaks, sampling_rate = peaks[0], peaks[1]
+    if data_format == "peaks":
+        peaks = data
+        # Sanitize input
+        peaks = _hrv_sanitize_input(peaks)
+        if isinstance(peaks, tuple):  # Detect actual sampling rate
+            peaks, sampling_rate = peaks[0], peaks[1]
 
-    # Compute R-R intervals (also referred to as NN) in milliseconds
-    rri, _ = _hrv_get_rri(peaks, sampling_rate=sampling_rate, interpolate=False)
+        # Compute R-R intervals (also referred to as NN) in milliseconds
+        rri, _ = _hrv_get_rri(peaks, sampling_rate=sampling_rate, interpolate=False)
+    else:
+        rri = data
+
+    # Compute the difference between the R-R intervals
+    # without checking whether they are successive
     diff_rri = np.diff(rri)
+
+    if check_successive:
+        diff_rri = diff_rri[find_successive_intervals(rri, rri_time)]
 
     out = {}  # Initialize empty container for results
 
@@ -151,7 +175,6 @@ def hrv_time(peaks, sampling_rate=1000, show=False, **kwargs):
 
 
 def _hrv_time_show(rri, **kwargs):
-
     fig = summary_plot(rri, **kwargs)
     plt.xlabel("R-R intervals (ms)")
     fig.suptitle("Distribution of R-R intervals")
@@ -160,7 +183,6 @@ def _hrv_time_show(rri, **kwargs):
 
 
 def _sdann(rri, window=1):
-
     window_size = window * 60 * 1000  # Convert window in min to ms
     n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
     if n_windows < 3:
@@ -177,7 +199,6 @@ def _sdann(rri, window=1):
 
 
 def _sdnni(rri, window=1):
-
     window_size = window * 60 * 1000  # Convert window in min to ms
     n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
     if n_windows < 3:
@@ -210,15 +231,15 @@ def _hrv_TINN(rri, bar_x, bar_y, binsize):
         while m < np.max(rri):
             n_start = np.where(bar_x == n)[0][0]
             n_end = np.where(bar_x == X)[0][0]
-            qn = np.polyval(np.polyfit([n, X], [0, Y], deg=1), bar_x[n_start : n_end + 1])
+            qn = np.polyval(np.polyfit([n, X], [0, Y], deg=1), bar_x[n_start: n_end + 1])
             m_start = np.where(bar_x == X)[0][0]
             m_end = np.where(bar_x == m)[0][0]
-            qm = np.polyval(np.polyfit([X, m], [Y, 0], deg=1), bar_x[m_start : m_end + 1])
+            qm = np.polyval(np.polyfit([X, m], [Y, 0], deg=1), bar_x[m_start: m_end + 1])
             q = np.zeros(len(bar_x))
-            q[n_start : n_end + 1] = qn
-            q[m_start : m_end + 1] = qm
+            q[n_start: n_end + 1] = qn
+            q[m_start: m_end + 1] = qm
             # least squares error
-            error = np.sum((bar_y[n_start : m_end + 1] - q[n_start : m_end + 1]) ** 2)
+            error = np.sum((bar_y[n_start: m_end + 1] - q[n_start: m_end + 1]) ** 2)
             if error < min_error:
                 N = n
                 M = m

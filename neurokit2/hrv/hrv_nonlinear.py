@@ -11,170 +11,129 @@ from ..complexity import (complexity_lempelziv, entropy_approximate,
                           entropy_fuzzy, entropy_multiscale, entropy_sample,
                           entropy_shannon, fractal_correlation, fractal_dfa,
                           fractal_higuchi, fractal_katz)
-from ..misc import NeuroKitWarning, find_consecutive
+from ..misc import NeuroKitWarning, find_consecutive, find_successive_intervals
 from ..signal import signal_zerocrossings
 from .hrv_utils import _hrv_get_rri, _hrv_sanitize_input
 
 
-def hrv_nonlinear(peaks, sampling_rate=1000, show=False, **kwargs):
+def hrv_nonlinear(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False, check_successive=True,
+                  **kwargs):
     """Computes nonlinear indices of Heart Rate Variability (HRV).
-
     See `Pham et al. (2021) <https://www.mdpi.com/1424-8220/21/12/3998>`_ and
     `Lau et al. (2021) <https://psyarxiv.com/f8k3x/>`_.
-
     Parameters
     ----------
-    peaks : dict
-        Samples at which cardiac extrema (i.e., R-peaks, systolic peaks) occur.
+    data : dict, list or ndarray
+        If data format is peaks, Samples at which cardiac extrema (i.e., R-peaks, systolic peaks) occur.
         Can be a list of indices or the output(s) of other functions such as ecg_peaks,
         ppg_peaks, ecg_process or bio_process.
+        If data format is R-R intervals, list or ndarray of R-R intervals.
+    rri_time : list or ndarray, optional
+        Time points corresponding to R-R intervals, in seconds.
+    data_format : str, optional
+        If "peaks", the R-R intervals are computed with hrv_get_rri.
+        If "rri", the input is assumed to already be R-R intervals and they are not computed.
     sampling_rate : int, optional
         Sampling rate (Hz) of the continuous cardiac signal in which the peaks occur. Should be at
         least twice as high as the highest frequency in vhf. By default 1000.
     show : bool, optional
         If True, will return a Poincaré plot, a scattergram, which plots each RR interval against the
         next successive one. The ellipse centers around the average RR interval. By default False.
+    check_successive: bool, optional
+        If True, will remove non-successive differences based on whether the R-R intervals match the corresponding
+        timepoints or if there are NaN values.
     **kwargs
         Other arguments to be passed into `fractal_dfa()` and `fractal_correlation()`.
-
 
     Returns
     -------
     DataFrame
         Contains non-linear HRV metrics:
-
         - **Characteristics of the Poincaré Plot Geometry**:
-
             - **SD1**: SD1 is a measure of the spread of RR intervals on the Poincaré plot
             perpendicular to the line of identity. It is an index of short-term RR interval
             fluctuations, i.e., beat-to-beat variability. It is equivalent (although on another
             scale) to RMSSD, and therefore it is redundant to report correlations with both
             (Ciccone, 2017).
-
             - **SD2**: SD2 is a measure of the spread of RR intervals on the Poincaré plot along the
             line of identity. It is an index of long-term RR interval fluctuations.
-
             - **SD1SD2**: the ratio between short and long term fluctuations of the RR intervals
             (SD1 divided by SD2).
-
             - **S**: Area of ellipse described by SD1 and SD2 (``pi * SD1 * SD2``). It is
             proportional to *SD1SD2*.
-
             - **CSI**: The Cardiac Sympathetic Index (Toichi, 1997), calculated by dividing the
             longitudinal variability of the Poincaré plot (``4*SD2``) by its transverse variability (``4*SD1``).
-
             - **CVI**: The Cardiac Vagal Index (Toichi, 1997), equal to the logarithm of the product of
             longitudinal (``4*SD2``) and transverse variability (``4*SD1``).
-
             - **CSI_Modified**: The modified CSI (Jeppesen, 2014) obtained by dividing the square of
             the longitudinal variability by its transverse variability.
-
         - **Indices of Heart Rate Asymmetry (HRA), i.e., asymmetry of the Poincaré plot** (Yan, 2017):
-
             - **GI**: Guzik's Index, defined as the distance of points above line of identity (LI)
             to LI divided by the distance of all points in Poincaré plot to LI except those that
             are located on LI.
-
             - **SI**: Slope Index, defined as the phase angle of points above LI divided by the
             phase angle of all points in Poincaré plot except those that are located on LI.
-
             - **AI**: Area Index, defined as the cumulative area of the sectors corresponding to
             the points that are located above LI divided by the cumulative area of sectors
             corresponding to all points in the Poincaré plot except those that are located on LI.
-
             - **PI**: Porta's Index, defined as the number of points below LI divided by the total
             number of points in Poincaré plot except those that are located on LI.
-
             - **SD1d** and **SD1a**: short-term variance of contributions of decelerations
             (prolongations of RR intervals) and accelerations (shortenings of RR intervals),
             respectively (Piskorski,  2011).
-
             - **C1d** and **C1a**: the contributions of heart rate decelerations and accelerations
             to short-term HRV, respectively (Piskorski,  2011).
-
             - **SD2d** and **SD2a**: long-term variance of contributions of decelerations
             (prolongations of RR intervals) and accelerations (shortenings of RR intervals),
             respectively (Piskorski,  2011).
-
             - **C2d** and **C2a**: the contributions of heart rate decelerations and accelerations
             to long-term HRV, respectively (Piskorski,  2011).
-
             - **SDNNd** and **SDNNa**: total variance of contributions of decelerations
             (prolongations of RR intervals) and accelerations (shortenings of RR intervals),
             respectively (Piskorski,  2011).
-
             - **Cd** and **Ca**: the total contributions of heart rate decelerations and
             accelerations to HRV.
-
         - **Indices of Heart Rate Fragmentation** (Costa, 2017):
-
             - **PIP**: Percentage of inflection points of the RR intervals series.
-
             - **IALS**: Inverse of the average length of the acceleration/deceleration segments.
-
             - **PSS**: Percentage of short segments.
-
             - **PAS**: IPercentage of NN intervals in alternation segments.
-
         - **Indices of Complexity**:
-
             - **ApEn**: The approximate entropy measure of HRV, calculated by `entropy_approximate()`.
-
             - **SampEn**: The sample entropy measure of HRV, calculated by `entropy_sample()`.
-
             - **ShanEn**: The Shannon entropy measure of HRV, calculated by `entropy_shannon()`.
-
             - **FuzzyEn**: The fuzzy entropy measure of HRV, calculated by `entropy_fuzzy()`.
-
             - **MSE**: The multiscale entropy measure of HRV, calculated by `entropy_multiscale()`.
-
             - **CMSE**: The composite multiscale entropy measure of HRV, calculated by `entropy_multiscale()`.
-
             - **RCMSE**: The refined composite multiscale entropy measure of HRV, calculated by `entropy_multiscale()`.
-
             - **CD**: The Correlation Dimension of the HR signal, calculated by `fractal_correlation()`.
-
             - **HFD**: The Higuchi's Fractal Dimension of the HR signal, calculated by `fractal_higuchi()`.
             kmax is set to "default".
-
             - **KFD**: The Katz's Fractal Dimension of the HR signal, calculated by `fractal_katz()`.
-
             - **LZC**: The Lempel-Ziv complexity of the HR signal, calculated by `fractal_lempelziv()`.
-
             - **DFA_alpha1**: The monofractal detrended fluctuation analysis of the HR signal corresponding
             to short-term correlations, calculated by `fractal_dfa()`.
-
             - **DFA_alpha2**: The monofractal detrended fluctuation analysis of the HR signal corresponding
             to long-term correlations, calculated by `fractal_dfa()`.
-
             - **DFA_alpha1_ExpRange**: The multifractal detrended fluctuation analysis of the HR signal
             corresponding to short-term correlations, calculated by `fractal_dfa()`. ExpRange is the range of
             singularity exponents, correspoinding to the width of the singularity spectrum.
-
             - **DFA_alpha2_ExpRange**: The multifractal detrended fluctuation analysis of the HR signal
             corresponding to long-term correlations, calculated by `fractal_dfa()`. ExpRange is the range of
             singularity exponents, correspoinding to the width of the singularity spectrum.
-
             - **DFA_alpha1_ExpMean**: Multifractal DFA. ExpMean is the mean of singularity exponents.
-
             - **DFA_alpha2_ExpMean**: Multifractal DFA. ExpMean is the mean of singularity exponents.
-
             - **DFA_alpha1_DimRange**: The multifractal detrended fluctuation analysis of the HR signal
             corresponding to short-term correlations, calculated by `fractal_dfa()`. DimRange is the range of
             singularity dimensions, correspoinding to the height of the singularity spectrum.
-
             - **DFA_alpha2_DimRange**: The multifractal detrended fluctuation analysis of the HR signal
             corresponding to long-term correlations, calculated by `fractal_dfa()`. DimRange is the range of
             singularity dimensions, correspoinding to the height of the singularity spectrum.
-
             - **DFA_alpha1_DimMean**: Multifractal DFA. Dimmean is the mean of singularity dimensions.
-
             - **DFA_alpha2_DimMean**: Multifractal DFA. Dimmean is the mean of singularity dimensions.
-
     See Also
     --------
     ecg_peaks, ppg_peaks, hrv_frequency, hrv_time, hrv_summary
-
     Examples
     --------
     >>> import neurokit2 as nk
@@ -188,69 +147,71 @@ def hrv_nonlinear(peaks, sampling_rate=1000, show=False, **kwargs):
     >>> # Compute HRV indices
     >>> hrv = nk.hrv_nonlinear(peaks, sampling_rate=100, show=True)
     >>> hrv #doctest: +SKIP
-
     References
     ----------
     - Pham, T., Lau, Z. J., Chen, S. H., & Makowski, D. (2021). Heart Rate Variability in Psychology:
     A Review of HRV Indices and an Analysis Tutorial. Sensors, 21(12), 3998.
-
     - Yan, C., Li, P., Ji, L., Yao, L., Karmakar, C., & Liu, C. (2017). Area asymmetry of heart
     rate variability signal. Biomedical engineering online, 16(1), 112.
-
     - Ciccone, A. B., Siedlik, J. A., Wecht, J. M., Deckert, J. A., Nguyen, N. D., & Weir, J. P.
     (2017). Reminder: RMSSD and SD1 are identical heart rate variability metrics. Muscle & nerve,
     56(4), 674-678.
-
     - Shaffer, F., & Ginsberg, J. P. (2017). An overview of heart rate variability metrics and norms.
     Frontiers in public health, 5, 258.
-
     - Costa, M. D., Davis, R. B., & Goldberger, A. L. (2017). Heart rate fragmentation: a new
     approach to the analysis of cardiac interbeat interval dynamics. Front. Physiol. 8, 255 (2017).
-
     - Jeppesen, J., Beniczky, S., Johansen, P., Sidenius, P., & Fuglsang-Frederiksen, A. (2014).
     Using Lorenz plot and Cardiac Sympathetic Index of heart rate variability for detecting seizures
     for patients with epilepsy. In 2014 36th Annual International Conference of the IEEE Engineering
     in Medicine and Biology Society (pp. 4563-4566). IEEE.
-
     - Piskorski, J., & Guzik, P. (2011). Asymmetric properties of long-term and total heart rate
     variability. Medical & biological engineering & computing, 49(11), 1289-1297.
-
     - Stein, P. K. (2002). Assessing heart rate variability from real-world Holter reports. Cardiac
     electrophysiology review, 6(3), 239-244.
-
     - Brennan, M. et al. (2001). Do Existing Measures of Poincaré Plot Geometry Reflect Nonlinear
     Features of Heart Rate Variability?. IEEE Transactions on Biomedical Engineering, 48(11), 1342-1347.
-
     - Toichi, M., Sugiura, T., Murai, T., & Sengoku, A. (1997). A new method of assessing cardiac
     autonomic function and its comparison with spectral analysis and coefficient of variation of R–R
     interval. Journal of the autonomic nervous system, 62(1-2), 79-84.
-
     - Acharya, R. U., Lim, C. M., & Joseph, P. (2002). Heart rate variability analysis using
     correlation dimension and detrended fluctuation analysis. Itbm-Rbm, 23(6), 333-339.
-
     """
-    # Sanitize input
-    peaks = _hrv_sanitize_input(peaks)
-    if isinstance(peaks, tuple):  # Detect actual sampling rate
-        peaks, sampling_rate = peaks[0], peaks[1]
 
-    # Compute R-R intervals (also referred to as NN) in milliseconds
-    rri, _ = _hrv_get_rri(peaks, sampling_rate=sampling_rate, interpolate=False)
+    if data_format == "peaks":
+        peaks = data
+        # Sanitize input
+        peaks = _hrv_sanitize_input(peaks)
+        if isinstance(peaks, tuple):  # Detect actual sampling rate
+            peaks, sampling_rate = peaks[0], peaks[1]
+
+        # Compute R-R intervals (also referred to as NN) in milliseconds
+        rri, _ = _hrv_get_rri(peaks, sampling_rate=sampling_rate, interpolate=False)
+    else:
+        rri = np.array(data)
 
     # Initialize empty container for results
     out = {}
 
     # Poincaré features (SD1, SD2, etc.)
-    out = _hrv_nonlinear_poincare(rri, out)
+    out = _hrv_nonlinear_poincare(rri, out, **kwargs)
 
     # Heart Rate Fragmentation
-    out = _hrv_nonlinear_fragmentation(rri, out)
+    out = _hrv_nonlinear_fragmentation(rri, out, **kwargs)
 
     # Heart Rate Asymmetry
-    out = _hrv_nonlinear_poincare_hra(rri, out)
+    out = _hrv_nonlinear_poincare_hra(rri, out, **kwargs)
+
+    if rri_time is None:
+        # Compute the timestamps of the interbeat intervals in seconds
+        rri_time = np.nancumsum(rri / 1000)
+
+    # Remove the timestamps of the NaN R-R intervals
+    rri_time = rri_time[~np.isnan(rri)]
+    # Remove the NaN R-R intervals
+    rri = rri[~np.isnan(rri)]
 
     # DFA
-    out = _hrv_dfa(peaks, rri, out, **kwargs)
+    out = _hrv_dfa(rri_time, rri, out, **kwargs)
 
     # Complexity
     tolerance = 0.2 * np.std(rri, ddof=1)
@@ -274,7 +235,7 @@ def hrv_nonlinear(peaks, sampling_rate=1000, show=False, **kwargs):
     out["LZC"] = complexity_lempelziv(rri, **kwargs)[0]
 
     if show:
-        _hrv_nonlinear_show(rri, out)
+        _hrv_nonlinear_show(rri, out, rri_time=rri_time, check_successive=check_successive)
 
     out = pd.DataFrame.from_dict(out, orient="index").T.add_prefix("HRV_")
     return out
@@ -283,17 +244,21 @@ def hrv_nonlinear(peaks, sampling_rate=1000, show=False, **kwargs):
 # =============================================================================
 # Get SD1 and SD2
 # =============================================================================
-def _hrv_nonlinear_poincare(rri, out):
+def _hrv_nonlinear_poincare(rri, out, rri_time=None, check_successive=True):
     """Compute SD1 and SD2.
-
     - Do existing measures of Poincare plot geometry reflect nonlinear features of heart rate
     variability? - Brennan (2001)
-
     """
 
     # HRV and hrvanalysis
-    rri_n = rri[:-1]
+    # without checking whether they are successive
     rri_plus = rri[1:]
+    rri_n = rri[:-1]
+
+    if check_successive:
+        rri_plus = rri_plus[find_successive_intervals(rri, rri_time)]
+        rri_n = rri_n[find_successive_intervals(rri, rri_time)]
+
     x1 = (rri_n - rri_plus) / np.sqrt(2)  # Eq.7
     x2 = (rri_n + rri_plus) / np.sqrt(2)
     sd1 = np.std(x1, ddof=1)
@@ -318,17 +283,20 @@ def _hrv_nonlinear_poincare(rri, out):
     return out
 
 
-def _hrv_nonlinear_poincare_hra(rri, out):
+def _hrv_nonlinear_poincare_hra(rri, out, rri_time=None, check_successive=True):
     """Heart Rate Asymmetry Indices.
-
     - Asymmetry of Poincaré plot (or termed as heart rate asymmetry, HRA) - Yan (2017)
     - Asymmetric properties of long-term and total heart rate variability - Piskorski (2011)
-
     """
 
     N = len(rri) - 1
     x = rri[:-1]  # rri_n, x-axis
     y = rri[1:]  # rri_plus, y-axis
+
+    if check_successive:
+        x = x[find_successive_intervals(rri, rri_time)]
+        y = y[find_successive_intervals(rri, rri_time)]
+        N = len(x)
 
     diff = y - x
     decelerate_indices = np.where(diff > 0)[0]  # set of points above IL where y > x
@@ -408,17 +376,21 @@ def _hrv_nonlinear_poincare_hra(rri, out):
     return out
 
 
-def _hrv_nonlinear_fragmentation(rri, out):
+def _hrv_nonlinear_fragmentation(rri, out, rri_time=None, check_successive=True):
     """Heart Rate Fragmentation Indices - Costa (2017)
-
     The more fragmented a time series is, the higher the PIP, IALS, PSS, and PAS indices will be.
     """
 
     diff_rri = np.diff(rri)
+
+    if rri_time is not None and check_successive:
+        diff_rri = diff_rri[find_successive_intervals(rri, rri_time)]
+
+    N = len(diff_rri) + 1
     zerocrossings = signal_zerocrossings(diff_rri)
 
     # Percentage of inflection points (PIP)
-    out["PIP"] = len(zerocrossings) / len(rri)
+    out["PIP"] = len(zerocrossings) / N
 
     # Inverse of the average length of the acceleration/deceleration segments (IALS)
     accelerations = np.where(diff_rri > 0)[0]
@@ -447,7 +419,6 @@ def _hrv_nonlinear_fragmentation(rri, out):
 # DFA
 # =============================================================================
 def _hrv_dfa(peaks, rri, out, n_windows="default", **kwargs):
-
     if "dfa_windows" in kwargs:
         dfa_windows = kwargs["dfa_windows"]
     else:
@@ -510,8 +481,7 @@ def _hrv_dfa(peaks, rri, out, n_windows="default", **kwargs):
 # =============================================================================
 # Plot
 # =============================================================================
-def _hrv_nonlinear_show(rri, out, ax=None, ax_marg_x=None, ax_marg_y=None):
-
+def _hrv_nonlinear_show(rri, out, ax=None, ax_marg_x=None, ax_marg_y=None, rri_time=None, check_successive=True):
     mean_heart_period = np.mean(rri)
     sd1 = out["SD1"]
     sd2 = out["SD2"]
@@ -523,6 +493,9 @@ def _hrv_nonlinear_show(rri, out, ax=None, ax_marg_x=None, ax_marg_y=None):
     # Poincare values
     ax1 = rri[:-1]
     ax2 = rri[1:]
+    if rri_time is not None and check_successive:
+        ax1 = ax1[find_successive_intervals(rri, rri_time)]
+        ax2 = ax2[find_successive_intervals(rri, rri_time)]
 
     # Set grid boundaries
     ax1_lim = (max(ax1) - min(ax1)) / 10
