@@ -28,4 +28,5 @@ __all__ = [
     "intervals_to_peaks",
     "parallel_run",
     "find_plateau",
+    "find_successive_intervals"
 ]

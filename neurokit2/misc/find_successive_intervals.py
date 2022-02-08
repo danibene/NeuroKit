@@ -11,12 +11,12 @@ def find_successive_intervals(intervals, intervals_time=None, thresh_unequal=2, 
     ----------
     intervals : list or ndarray
         Intervals, e.g. breath-to-breath (BBI) or rpeak-to-rpeak (RRI)
-    intervals_time : list or ndarray
+    intervals_time : list or ndarray, optional
         Time points corresponding to intervals, in seconds.
-    thresh_unequal : int, float
+    thresh_unequal : int or float, optional
         Threshold at which the difference between time points is considered to
         be unequal to the interval, in milliseconds.
-    n_diff: int
+    n_diff: int, optional
         The number of times values are differenced.
         Can be used to check which values are valid for the n-th difference
         assuming successive intervals.

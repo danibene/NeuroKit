@@ -8,11 +8,14 @@ import pandas as pd
 from ..misc import NeuroKitWarning
 from ..signal.signal_power import _signal_power_instant_plot, signal_power
 from ..signal.signal_psd import signal_psd
+from ..signal import signal_interpolate
 from .hrv_utils import _hrv_get_rri, _hrv_sanitize_input
 
 
 def hrv_frequency(
-    peaks,
+    data,
+    rri_time=None,
+    data_format="peaks",
     sampling_rate=1000,
     ulf=(0, 0.0033),
     vlf=(0.0033, 0.04),
@@ -34,10 +37,16 @@ def hrv_frequency(
 
     Parameters
     ----------
-    peaks : dict
-        Samples at which cardiac extrema (i.e., R-peaks, systolic peaks) occur.
+    data : dict, list or ndarray
+        If data format is peaks, Samples at which cardiac extrema (i.e., R-peaks, systolic peaks) occur.
         Can be a list of indices or the output(s) of other functions such as ecg_peaks,
         ppg_peaks, ecg_process or bio_process.
+        If data format is R-R intervals, list or ndarray of R-R intervals.
+    rri_time : list or ndarray, optional
+        Time points corresponding to R-R intervals, in seconds.
+    data_format : str, optional
+        If "peaks", the R-R intervals are computed with hrv_get_rri.
+        If "rri", the input is assumed to already be R-R intervals and they are not computed.
     sampling_rate : int, optional
         Sampling rate (Hz) of the continuous cardiac signal in which the peaks occur. Should be at
         least twice as high as the highest frequency in vhf. By default 1000.
@@ -118,15 +127,36 @@ def hrv_frequency(
     Rate Variability. Simul. Notes Eur., 27(4), 183-190.
 
     """
-    # Sanitize input
-    peaks = _hrv_sanitize_input(peaks)
-    if isinstance(peaks, tuple):  # Detect actual sampling rate
-        peaks, sampling_rate = peaks[0], peaks[1]
 
-    # Compute R-R intervals (also referred to as NN) in milliseconds (interpolated at 1000 Hz by default)
-    rri, sampling_rate = _hrv_get_rri(
-        peaks, sampling_rate=sampling_rate, interpolate=True, **kwargs
-    )
+    if data_format == "peaks":
+        peaks = data
+        # Sanitize input
+        peaks = _hrv_sanitize_input(peaks)
+        if isinstance(peaks, tuple):  # Detect actual sampling rate
+            peaks, sampling_rate = peaks[0], peaks[1]
+
+        # Compute R-R intervals (also referred to as NN) in milliseconds  (interpolated at 1000 Hz by default)
+        rri, sampling_rate = _hrv_get_rri(peaks, sampling_rate=sampling_rate, interpolate=True)
+    else:
+        rri = np.array(data)
+        if rri_time is None:
+            # Compute the timestamps of the R-R intervals in seconds
+            rri_time = np.nancumsum(rri / 1000)
+
+        # Remove NaN R-R intervals, if any
+        rri_time = rri_time[~np.isnan(rri)]
+        rri = rri[~np.isnan(rri)]
+
+        # Sanitize minimum sampling rate for interpolation to 10 Hz, so that output is the same as _hrv_get_rri
+        sampling_rate = max(sampling_rate, 10)
+
+        x_new = np.arange(np.floor(sampling_rate*rri_time[0]), np.ceil(sampling_rate*rri_time[-1]))/sampling_rate
+        rri = signal_interpolate(
+            rri_time,
+            rri,
+            x_new=x_new,
+            **kwargs
+        )
 
     frequency_band = [ulf, vlf, lf, hf, vhf]
     power = signal_power(
