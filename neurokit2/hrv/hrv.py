@@ -41,6 +41,8 @@ def hrv(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False
     check_successive: bool, optional
             If True, will remove non-successive differences based on whether the R-R intervals match the corresponding
             timepoints or if there are NaN values (only for HRV indices that assume successive differences e.g. RMSSD).
+            Should be set to False if R-R intervals are interpolated, as the R-R intervals will then not match the
+            timepoints.
 
     Returns
     -------
@@ -101,11 +103,10 @@ def hrv(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False
 
     # Gather indices
     out.append(hrv_time(data, rri_time=rri_time, data_format=data_format, sampling_rate=sampling_rate,
-                        check_successive=check_successive, **kwargs))
-    out.append(hrv_frequency(data, rri_time=rri_time, data_format=data_format, sampling_rate=sampling_rate,
-                             **kwargs))
+                        check_successive=check_successive))
+    out.append(hrv_frequency(data, rri_time=rri_time, data_format=data_format, sampling_rate=sampling_rate))
     out.append(hrv_nonlinear(data, rri_time=rri_time, data_format=data_format, sampling_rate=sampling_rate,
-                             check_successive=check_successive, **kwargs))
+                             check_successive=check_successive))
 
     if data_format=="peaks":
         peaks = data

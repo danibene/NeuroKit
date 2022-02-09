@@ -193,13 +193,13 @@ def hrv_nonlinear(data, rri_time=None, data_format="peaks", sampling_rate=1000, 
     out = {}
 
     # Poincaré features (SD1, SD2, etc.)
-    out = _hrv_nonlinear_poincare(rri, out, **kwargs)
+    out = _hrv_nonlinear_poincare(rri, out, rri_time=rri_time, check_successive=check_successive)
 
     # Heart Rate Fragmentation
-    out = _hrv_nonlinear_fragmentation(rri, out, **kwargs)
+    out = _hrv_nonlinear_fragmentation(rri, out, rri_time=rri_time, check_successive=check_successive)
 
     # Heart Rate Asymmetry
-    out = _hrv_nonlinear_poincare_hra(rri, out, **kwargs)
+    out = _hrv_nonlinear_poincare_hra(rri, out, rri_time=rri_time, check_successive=check_successive)
 
     if rri_time is None:
         # Compute the timestamps of the interbeat intervals in seconds
