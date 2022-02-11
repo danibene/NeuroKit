@@ -185,18 +185,16 @@ def _hrv_time_show(rri, **kwargs):
     return fig
 
 
-def _sdann(rri, window=1, rri_time=None, check_successive=False):
+def _sdann(rri, window=1, rri_time=None, check_successive=True):
     window_size = window * 60 * 1000  # Convert window in min to ms
     if rri_time is None or not check_successive:
         # Compute the timestamps of the R-R intervals in seconds
         rri_time = np.nancumsum(rri / 1000)
+    # Convert timestamps to milliseconds and subtract first timestamp
     rri_time_ms_ref_start = (rri_time - rri_time[0])*1000
-
-    # n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
     n_windows = int(np.round(rri_time_ms_ref_start[-1] / window_size))
     if n_windows < 3:
         return np.nan
-    # rri_cumsum = np.cumsum(rri)
     avg_rri = []
     for i in range(n_windows):
         start = i * window_size
@@ -207,17 +205,16 @@ def _sdann(rri, window=1, rri_time=None, check_successive=False):
     return sdann
 
 
-def _sdnni(rri, window=1, rri_time=None, check_successive=False):
+def _sdnni(rri, window=1, rri_time=None, check_successive=True):
     window_size = window * 60 * 1000  # Convert window in min to ms
     if rri_time is None or not check_successive:
         # Compute the timestamps of the R-R intervals in seconds
         rri_time = np.nancumsum(rri / 1000)
+    # Convert timestamps to milliseconds and subtract first timestamp
     rri_time_ms_ref_start = (rri_time - rri_time[0])*1000
-    # n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
     n_windows = int(np.round(rri_time_ms_ref_start[-1] / window_size))
     if n_windows < 3:
         return np.nan
-    # rri_cumsum = np.cumsum(rri)
     sdnn_ = []
     for i in range(n_windows):
         start = i * window_size
