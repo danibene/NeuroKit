@@ -202,7 +202,7 @@ def hrv_nonlinear(data, rri_time=None, data_format="peaks", sampling_rate=1000, 
     out = _hrv_nonlinear_poincare_hra(rri, out, rri_time=rri_time, check_successive=check_successive)
 
     if rri_time is None:
-        # Compute the timestamps of the interbeat intervals in seconds
+        # Compute the timestamps of the R-R intervals in seconds
         rri_time = np.nancumsum(rri / 1000)
 
     # Remove the timestamps of the NaN R-R intervals

@@ -126,9 +126,10 @@ def hrv_time(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=
     # Deviation-based
     out["MeanNN"] = np.nanmean(rri)
     out["SDNN"] = np.nanstd(rri, ddof=1)
+
     for i in [1, 2, 5]:
-        out["SDANN" + str(i)] = _sdann(rri, window=i)
-        out["SDNNI" + str(i)] = _sdnni(rri, window=i)
+        out["SDANN" + str(i)] = _sdann(rri, window=i, rri_time=rri_time, check_successive=check_successive)
+        out["SDNNI" + str(i)] = _sdnni(rri, window=i, rri_time=rri_time, check_successive=check_successive)
 
     # Difference-based
     out["RMSSD"] = np.sqrt(np.nanmean(diff_rri ** 2))
@@ -182,33 +183,44 @@ def _hrv_time_show(rri, **kwargs):
     return fig
 
 
-def _sdann(rri, window=1):
+def _sdann(rri, window=1, rri_time=None, check_successive=False):
     window_size = window * 60 * 1000  # Convert window in min to ms
-    n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
+    if rri_time is None or not check_successive:
+        # Compute the timestamps of the R-R intervals in seconds
+        rri_time = np.nancumsum(rri / 1000)
+    rri_time_ms_ref_start = (rri_time - rri_time[0])*1000
+
+    # n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
+    n_windows = int(np.round(rri_time_ms_ref_start / window_size))
     if n_windows < 3:
         return np.nan
-    rri_cumsum = np.cumsum(rri)
+    # rri_cumsum = np.cumsum(rri)
     avg_rri = []
     for i in range(n_windows):
         start = i * window_size
-        start_idx = np.where(rri_cumsum >= start)[0][0]
-        end_idx = np.where(rri_cumsum < start + window_size)[0][-1]
-        avg_rri.append(np.mean(rri[start_idx:end_idx]))
+        start_idx = np.where(rri_time_ms_ref_start >= start)[0][0]
+        end_idx = np.where(rri_time_ms_ref_start < start + window_size)[0][-1]
+        avg_rri.append(np.nanmean(rri[start_idx:end_idx]))
     sdann = np.nanstd(avg_rri, ddof=1)
     return sdann
 
 
-def _sdnni(rri, window=1):
+def _sdnni(rri, window=1, rri_time=None, check_successive=False):
     window_size = window * 60 * 1000  # Convert window in min to ms
-    n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
+    if rri_time is None or not check_successive:
+        # Compute the timestamps of the R-R intervals in seconds
+        rri_time = np.nancumsum(rri / 1000)
+    rri_time_ms_ref_start = (rri_time - rri_time[0])*1000
+    # n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
+    n_windows = int(np.round(rri_time_ms_ref_start / window_size))
     if n_windows < 3:
         return np.nan
-    rri_cumsum = np.cumsum(rri)
+    # rri_cumsum = np.cumsum(rri)
     sdnn_ = []
     for i in range(n_windows):
         start = i * window_size
-        start_idx = np.where(rri_cumsum >= start)[0][0]
-        end_idx = np.where(rri_cumsum < start + window_size)[0][-1]
+        start_idx = np.where(rri_time_ms_ref_start >= start)[0][0]
+        end_idx = np.where(rri_time_ms_ref_start < start + window_size)[0][-1]
         sdnn_.append(np.nanstd(rri[start_idx:end_idx], ddof=1))
     sdnni = np.nanmean(sdnn_)
     return sdnni
