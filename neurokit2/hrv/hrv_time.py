@@ -191,7 +191,7 @@ def _sdann(rri, window=1, rri_time=None, check_successive=False):
     rri_time_ms_ref_start = (rri_time - rri_time[0])*1000
 
     # n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
-    n_windows = int(np.round(rri_time_ms_ref_start / window_size))
+    n_windows = int(np.round(rri_time_ms_ref_start[-1]  / window_size))
     if n_windows < 3:
         return np.nan
     # rri_cumsum = np.cumsum(rri)
@@ -212,7 +212,7 @@ def _sdnni(rri, window=1, rri_time=None, check_successive=False):
         rri_time = np.nancumsum(rri / 1000)
     rri_time_ms_ref_start = (rri_time - rri_time[0])*1000
     # n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
-    n_windows = int(np.round(rri_time_ms_ref_start / window_size))
+    n_windows = int(np.round(rri_time_ms_ref_start[-1] / window_size))
     if n_windows < 3:
         return np.nan
     # rri_cumsum = np.cumsum(rri)
