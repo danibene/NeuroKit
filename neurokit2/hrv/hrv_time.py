@@ -156,7 +156,9 @@ def hrv_time(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=
         binsize = kwargs["binsize"]
     else:
         binsize = (1 / 128) * 1000
-    bins = np.arange(0, np.max(rri) + binsize, binsize)
+    bins = np.arange(0, np.nanmax(rri) + binsize, binsize)
+    # Remove the NaN R-R intervals
+    rri = rri[~np.isnan(rri)]
     bar_y, bar_x = np.histogram(rri, bins=bins)
     # HRV Triangular Index
     out["HTI"] = len(rri) / np.max(bar_y)
@@ -191,7 +193,7 @@ def _sdann(rri, window=1, rri_time=None, check_successive=False):
     rri_time_ms_ref_start = (rri_time - rri_time[0])*1000
 
     # n_windows = int(np.round(np.cumsum(rri)[-1] / window_size))
-    n_windows = int(np.round(rri_time_ms_ref_start[-1]  / window_size))
+    n_windows = int(np.round(rri_time_ms_ref_start[-1] / window_size))
     if n_windows < 3:
         return np.nan
     # rri_cumsum = np.cumsum(rri)
