@@ -37,7 +37,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a5fbd7de-1bfb-4b79-bdac-dd068dddfe1f" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+=======
+>>>>>>> remotes/origin/master
       <change beforePath="$PROJECT_DIR$/.idea/NeuroKit.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NeuroKit.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -103,6 +106,21 @@
       <method v="2" />
     </configuration>
   </component>
+<<<<<<< HEAD
+=======
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+>>>>>>> remotes/origin/master
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
@@ -117,14 +135,19 @@
       <workItem from="1576387677929" duration="1147000" />
       <workItem from="1576465425012" duration="255000" />
       <workItem from="1576573439935" duration="81000" />
+<<<<<<< HEAD
       <workItem from="1644290052826" duration="2288000" />
       <workItem from="1644296441459" duration="15122000" />
       <workItem from="1644609211796" duration="5970000" />
+=======
+      <workItem from="1642197624417" duration="2153000" />
+>>>>>>> remotes/origin/master
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+<<<<<<< HEAD
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -137,6 +160,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+=======
+>>>>>>> remotes/origin/master
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576465541167">
