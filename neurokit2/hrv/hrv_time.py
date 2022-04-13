@@ -177,19 +177,11 @@ def hrv_time(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=
     out["MaxNN"] = np.nanmax(rri)
 
     # Geometrical domain
-<<<<<<< HEAD
-    if "binsize" in kwargs.keys():
-        binsize = kwargs["binsize"]
-    else:
-        binsize = (1 / 128) * 1000
+    binsize = kwargs.get("binsize", ((1 / 128) * 1000))
     bins = np.arange(0, np.nanmax(rri) + binsize, binsize)
     # Remove the NaN R-R intervals
     rri = rri[~np.isnan(rri)]
-=======
-    binsize = kwargs.get("binsize", ((1 / 128) * 1000))
 
-    bins = np.arange(0, np.max(rri) + binsize, binsize)
->>>>>>> dev
     bar_y, bar_x = np.histogram(rri, bins=bins)
     # HRV Triangular Index
     out["HTI"] = len(rri) / np.max(bar_y)
