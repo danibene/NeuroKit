@@ -128,7 +128,6 @@ def hrv_frequency(
 
     """
 
-<<<<<<< HEAD
     if data_format == "peaks":
         peaks = data
         # Sanitize input
@@ -137,7 +136,7 @@ def hrv_frequency(
             peaks, sampling_rate = peaks[0], peaks[1]
 
         # Compute R-R intervals (also referred to as NN) in milliseconds  (interpolated at 1000 Hz by default)
-        rri, sampling_rate = _hrv_get_rri(peaks, sampling_rate=sampling_rate, interpolate=True)
+        rri, sampling_rate = _hrv_get_rri(peaks, sampling_rate=sampling_rate, interpolate=True, **kwargs)
     else:
         rri = np.array(data)
         if rri_time is None:
@@ -158,17 +157,6 @@ def hrv_frequency(
             x_new=x_new,
             **kwargs
         )
-=======
-    # Sanitize input
-    peaks = _hrv_sanitize_input(peaks)
-    if isinstance(peaks, tuple):  # Detect actual sampling rate
-        peaks, sampling_rate = peaks[0], peaks[1]
-
-    # Compute R-R intervals (also referred to as NN) in milliseconds (interpolated at 1000 Hz by default)
-    rri, sampling_rate = _hrv_get_rri(
-        peaks, sampling_rate=sampling_rate, interpolate=True, **kwargs
-    )
->>>>>>> dev
 
     frequency_band = [ulf, vlf, lf, hf, vhf]
 
