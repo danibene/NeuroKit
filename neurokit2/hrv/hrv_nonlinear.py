@@ -7,13 +7,6 @@ import numpy as np
 import pandas as pd
 import scipy.stats
 
-<<<<<<< HEAD
-from ..complexity import (complexity_lempelziv, entropy_approximate,
-                          entropy_fuzzy, entropy_multiscale, entropy_sample,
-                          entropy_shannon, fractal_correlation, fractal_dfa,
-                          fractal_higuchi, fractal_katz)
-from ..misc import NeuroKitWarning, find_consecutive, find_successive_intervals
-=======
 from ..complexity import (
     complexity_lempelziv,
     entropy_approximate,
@@ -26,8 +19,7 @@ from ..complexity import (
     fractal_higuchi,
     fractal_katz,
 )
-from ..misc import NeuroKitWarning, find_consecutive
->>>>>>> dev
+from ..misc import NeuroKitWarning, find_consecutive, find_successive_intervals
 from ..signal import signal_zerocrossings
 from .hrv_utils import _hrv_get_rri, _hrv_sanitize_input
 
@@ -435,12 +427,6 @@ def _hrv_nonlinear_fragmentation(rri, out, rri_time=None, check_successive=True)
 # DFA
 # =============================================================================
 def _hrv_dfa(peaks, rri, out, n_windows="default", **kwargs):
-<<<<<<< HEAD
-    if "dfa_windows" in kwargs:
-        dfa_windows = kwargs["dfa_windows"]
-    else:
-        dfa_windows = [(4, 11), (12, None)]
-=======
 
     # if "dfa_windows" in kwargs:
     #    dfa_windows = kwargs["dfa_windows"]
@@ -448,7 +434,6 @@ def _hrv_dfa(peaks, rri, out, n_windows="default", **kwargs):
     # dfa_windows = [(4, 11), (12, None)]
     # consider using dict.get() mthd directly
     dfa_windows = kwargs.get("dfa_windows", [(4, 11), (12, None)])
->>>>>>> dev
 
     # Determine max beats
     if dfa_windows[1][1] is None:
