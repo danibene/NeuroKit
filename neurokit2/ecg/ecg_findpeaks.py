@@ -844,7 +844,7 @@ def _ecg_findpeaks_engzee(signal, sampling_rate=1000, **kwargs):
 # =============================================================================
 # Stationary Wavelet Transform  (SWT) - Kalidas and Tamil (2017)
 # =============================================================================
-def _ecg_findpeaks_kalidas(signal, sampling_rate=1000, **kwargs):
+def _ecg_findpeaks_kalidas(signal, sampling_rate=1000, extra_padding=True, **kwargs):
     """From https://github.com/berndporr/py-ecg-detectors/
 
     - Vignesh Kalidas and Lakshman Tamil (2017). Real-time QRS detector using Stationary Wavelet Transform
@@ -865,15 +865,36 @@ def _ecg_findpeaks_kalidas(signal, sampling_rate=1000, **kwargs):
 
     swt_level = 3
     padding = -1
-    for i in range(1000):
-        if (len(signal) + i) % 2 ** swt_level == 0:
+    
+    if extra_padding:
+        # Somewhat arbitrary min/max values
+        max_padding = 100*sampling_rate
+        # Well, there would be at least one heartbeat in 2 seconds?
+        min_padding = 2*sampling_rate
+        # Pad before the signal in addition to after
+        before_pad = 1
+        # Input to np.pad
+        pad_mode = "wrap"
+    else:
+        max_padding = 1000
+        min_padding = 0
+        # Pad only after the signal
+        before_pad = 0
+        # Input to np.pad
+        pad_mode = "edge"
+        
+    paddings = np.arange(min_padding, max_padding + 1, 1)
+        
+        
+    for i in paddings:
+        if (len(signal) + i*(before_pad+1)) % 2 ** swt_level == 0:
             padding = i
             break
-
+    
     if padding > 0:
-        signal = np.pad(signal, (0, padding), "edge")
+        signal = np.pad(signal, (padding*before_pad, padding), pad_mode)
     elif padding == -1:
-        print("Padding greater than 1000 required\n")
+        print("Padding greater than"+ str(max_padding)+"required\n")
 
     swt_ecg = pywt.swt(signal, "db3", level=swt_level)
     swt_ecg = np.array(swt_ecg)
@@ -886,13 +907,23 @@ def _ecg_findpeaks_kalidas(signal, sampling_rate=1000, **kwargs):
 
     sos = scipy.signal.butter(3, [f1, f2], btype="bandpass", output="sos")
     filtered_squared = scipy.signal.sosfilt(sos, squared)
-
-    # Drop padding to avoid detecting peaks inside it (#456)
-    filtered_squared = filtered_squared[:signal_length]
+    
+    if not extra_padding:
+        # Drop padding to avoid detecting peaks inside it (#456)
+        filtered_squared = filtered_squared[:signal_length]
 
     filt_peaks = _ecg_findpeaks_peakdetect(filtered_squared, sampling_rate)
-
+    
     filt_peaks = np.array(filt_peaks, dtype="int")
+    
+    if extra_padding:
+        # Drop peaks detected where signal was padded
+        filt_peaks = filt_peaks[np.where((filt_peaks > padding) & 
+                                         (filt_peaks < padding + 
+                                          signal_length))]
+        # Peak sample values should be relative to start of original signal
+        filt_peaks = filt_peaks - padding*before_pad
+        
     return filt_peaks
 
 

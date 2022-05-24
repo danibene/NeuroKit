@@ -9,7 +9,7 @@ from .ecg_phase import ecg_phase
 from .ecg_quality import ecg_quality
 
 
-def ecg_process(ecg_signal, sampling_rate=1000, method="neurokit"):
+def ecg_process(ecg_signal, sampling_rate=1000, method="neurokit", **kwargs):
     """Process an ECG signal.
 
     Convenience function that automatically processes an ECG signal.
@@ -95,7 +95,7 @@ def ecg_process(ecg_signal, sampling_rate=1000, method="neurokit"):
     ecg_cleaned = ecg_clean(ecg_signal, sampling_rate=sampling_rate, method=method)
     # R-peaks
     instant_peaks, rpeaks, = ecg_peaks(
-        ecg_cleaned=ecg_cleaned, sampling_rate=sampling_rate, method=method, correct_artifacts=True
+        ecg_cleaned=ecg_cleaned, sampling_rate=sampling_rate, method=method, correct_artifacts=True, **kwargs
     )
 
     rate = signal_rate(rpeaks, sampling_rate=sampling_rate, desired_length=len(ecg_cleaned))
