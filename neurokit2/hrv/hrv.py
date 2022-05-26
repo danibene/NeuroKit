@@ -14,12 +14,16 @@ from ..signal import signal_interpolate
 
 
 def hrv(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False, check_successive=True, **kwargs):
-    """Computes indices of Heart Rate Variability (HRV).
+    """**Heart Rate Variability (HRV)**
 
-    Computes HRV indices in the time-, frequency-, and nonlinear domain. Note that a minimum duration
-    of the signal containing the peaks is recommended for some HRV indices to be meaninful. For
-    instance, 1, 2 and 5 minutes of high quality signal are the recomended minima for HF, LF and LF/HF,
-    respectively. See references for details.
+    This function computes all HRV indices available in NeuroKit. It is essentially a convenience
+    function that aggregates results from the :func:`time domain <hrv_time>`, :func:`frequency
+    domain <hrv_frequency>`, and :func:`non-linear domain <hrv_nonlinear>`.
+
+    .. tip::
+
+        We strongly recommend checking our open-access paper `Pham et al. (2021)
+        <https://doi.org/10.3390/s21123998>`_ on HRV indices for more information.
 
     Parameters
     ----------
@@ -37,7 +41,7 @@ def hrv(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False
         Sampling rate (Hz) of the continuous cardiac signal in which the peaks occur. Should be at
         least twice as high as the highest frequency in vhf. By default 1000.
     show : bool, optional
-        If True, returns the plots that are generates for each of the domains.
+        If ``True``, returns the plots that are generates for each of the domains.
     check_successive: bool, optional
             If True, will remove non-successive differences based on whether the R-R intervals match the corresponding
             timepoints or if there are NaN values (only for HRV indices that assume successive differences e.g. RMSSD).
@@ -47,55 +51,59 @@ def hrv(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False
     Returns
     -------
     DataFrame
-        Contains HRV metrics from three domains:
-        - frequency
-        (see `hrv_frequency <https://neurokit2.readthedocs.io/en/latest/functions.html#neurokit2.hrv.hrv_frequency>`_)
-        - time (see `hrv_time <https://neurokit2.readthedocs.io/en/latest/functions.html#neurokit2.hrv.hrv_time>`_)
-        - non-linear
-        (see `hrv_nonlinear <https://neurokit2.readthedocs.io/en/latest/functions.html#neurokit2.hrv.hrv_nonlinear>`_)
-        If RSP data is provided (e.g., output of `bio_process`):
-        - rsa
-         Otherwise, to compute ECG-derived respiration,
-         use `hrv_rsa <https://neurokit2.readthedocs.io/en/latest/functions.html#neurokit2.hrv.hrv_rsa>`_
-         If no raw respiratory data is available, users can also choose to use
-         `ecg_rsp <https://neurokit2.readthedocs.io/en/latest/functions.html#neurokit2.ecg.ecg_rsp`_ to
-         obtain ECG-derived respiratory signal, although this is not an ideal procedure.
+        Contains HRV indices in a DataFrame. If RSP data was provided (e.g., output of
+        :func:`bio_process`), RSA indices will also be included.
 
     See Also
     --------
-    ecg_peaks, ppg_peaks, hrv_time, hrv_frequency, hrv_nonlinear, hrv_rsa
+    hrv_time, hrv_frequency, hrv_nonlinear, hrv_rsa, .ecg_peaks, ppg_peaks,
 
     Examples
     --------
-    >>> import neurokit2 as nk
-    >>>
-    >>> # Download data
-    >>> data = nk.data("bio_resting_5min_100hz")
-    >>>
-    >>> # Clean signal and Find peaks
-    >>> ecg_cleaned = nk.ecg_clean(data["ECG"], sampling_rate=100)
-    >>> peaks, info = nk.ecg_peaks(ecg_cleaned, sampling_rate=100, correct_artifacts=True)
-    >>>
-    >>> # Compute HRV indices
-    >>> hrv_indices = nk.hrv(peaks, sampling_rate=100, show=True)
-    >>> hrv_indices #doctest: +SKIP
-    >>>
-    >>> # Compute HRV from processed signals
-    >>> signals, info = nk.bio_process(data, sampling_rate=100)
-    >>> hrv = nk.hrv(signals, sampling_rate=100, show=True)
-    >>> hrv #doctest: +SKIP
+    **Example 1**: Only using a list of R-peaks locations
+
+    .. ipython:: python
+
+      import neurokit2 as nk
+      import matplotlib.pyplot as plt
+      plt.rc('font', size=8)
+
+      # Download data
+      data = nk.data("bio_resting_5min_100hz")
+
+      # Clean signal and Find peaks
+      ecg_cleaned = nk.ecg_clean(data["ECG"], sampling_rate=100)
+      peaks, info = nk.ecg_peaks(ecg_cleaned, sampling_rate=100, correct_artifacts=True)
+
+      # Compute HRV indices
+      @savefig p_hrv1.png scale=100%
+      hrv_indices = nk.hrv(peaks, sampling_rate=100, show=True)
+      @suppress
+      plt.close()
+
+    **Example 2**: Compute HRV directly from processed data
+
+    .. ipython:: python
+
+      # Download data
+      data = nk.data("bio_resting_5min_100hz")
+
+      # Process
+      signals, info = nk.bio_process(data, sampling_rate=100)
+
+      # Get HRV
+      nk.hrv(signals, sampling_rate=100)
 
 
     References
     ----------
-    - Pham, T., Lau, Z. J., Chen, S. H. A., & Makowski, D. (2021). Heart Rate Variability in Psychology:
-    A Review of HRV Indices and an Analysis Tutorial. Sensors, 21(12), 3998. https://doi:10.3390/s21123998
-
-    - Stein, P. K. (2002). Assessing heart rate variability from real-world Holter reports. Cardiac
-    electrophysiology review, 6(3), 239-244.
-
-    - Shaffer, F., & Ginsberg, J. P. (2017). An overview of heart rate variability metrics and norms.
-    Frontiers in public health, 5, 258.
+    * Pham, T., Lau, Z. J., Chen, S. H. A., & Makowski, D. (2021). Heart Rate Variability in
+      Psychology: A Review of HRV Indices and an Analysis Tutorial. Sensors, 21(12), 3998.
+      https://doi.org/10.3390/s21123998
+    * Stein, P. K. (2002). Assessing heart rate variability from real-world Holter reports. Cardiac
+      electrophysiology review, 6(3), 239-244.
+    * Shaffer, F., & Ginsberg, J. P. (2017). An overview of heart rate variability metrics and
+      norms. Frontiers in public health, 5, 258.
 
     """
     # Get indices
@@ -108,15 +116,12 @@ def hrv(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False
     out.append(hrv_nonlinear(data, rri_time=rri_time, data_format=data_format, sampling_rate=sampling_rate,
                              check_successive=check_successive))
 
-    if data_format=="peaks":
-        peaks = data
-        # Compute RSA if rsp data is available
-        if isinstance(peaks, pd.DataFrame):
-            rsp_cols = [col for col in peaks.columns if "RSP_Phase" in col]
-            if len(rsp_cols) == 2:
-                rsp_signals = peaks[rsp_cols]
-                rsa = hrv_rsa(peaks, rsp_signals, sampling_rate=sampling_rate)
-                out.append(pd.DataFrame([rsa]))
+    # Compute RSA if rsp data is available
+    if isinstance(data, pd.DataFrame):
+        if ("RSP_Phase" in data.columns) and ("RSP_Phase_Completion" in data.columns):
+            rsp_signals = data[["RSP_Phase", "RSP_Phase_Completion"]]
+            rsa = hrv_rsa(data, rsp_signals, sampling_rate=sampling_rate)
+            out.append(pd.DataFrame([rsa]))
 
     out = pd.concat(out, axis=1)
 
@@ -129,8 +134,13 @@ def hrv(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=False
         # Indices for plotting
         out_plot = out.copy(deep=False)
 
-        _hrv_plot(data, out=out, rri_time=rri_time, data_format=data_format, sampling_rate=1000,
-                  check_successive=check_successive, **kwargs)
+        _hrv_plot(data, 
+                  out=out_plot, 
+                  rri_time=rri_time, 
+                  data_format=data_format, 
+                  sampling_rate=sampling_rate,
+                  check_successive=check_successive, 
+                  **kwargs)
 
     return out
 
@@ -155,6 +165,7 @@ def _hrv_plot(data, out, rri_time=None, data_format="peaks", sampling_rate=1000,
     ax_marg_x.set_title("Poincaré Plot")
     ax_marg_y = fig.add_subplot(spec_within[1:4, 3])
 
+    fig.subplots_adjust(hspace=0.5, wspace=0.5)
     # Format data as R-R intervals without NaN values
     if data_format == "peaks":
         peaks = data
