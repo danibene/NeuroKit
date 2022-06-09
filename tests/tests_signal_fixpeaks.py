@@ -4,7 +4,11 @@ import numpy as np
 import numpy.random
 import pytest
 
-from neurokit2.signal.signal_fixpeaks import _correct_artifacts, _find_artifacts, signal_fixpeaks
+from neurokit2.signal.signal_fixpeaks import (
+    _correct_artifacts,
+    _find_artifacts,
+    signal_fixpeaks,
+)
 
 
 def compute_rmssd(peaks):
@@ -72,7 +76,9 @@ def peaks_missed(peaks_correct, artifact_idcs):
 @pytest.fixture
 def peaks_extra(peaks_correct, artifact_idcs):
 
-    extra_peaks = (peaks_correct[artifact_idcs + 1] - peaks_correct[artifact_idcs]) / 15 + peaks_correct[artifact_idcs]
+    extra_peaks = (
+        peaks_correct[artifact_idcs + 1] - peaks_correct[artifact_idcs]
+    ) / 15 + peaks_correct[artifact_idcs]
 
     peaks_extra = peaks_correct.copy()
     peaks_extra = np.insert(peaks_extra, artifact_idcs, extra_peaks)
@@ -82,7 +88,12 @@ def peaks_extra(peaks_correct, artifact_idcs):
 
 @pytest.fixture
 def artifacts_misaligned(artifact_idcs):
-    artifacts = {"ectopic": list(artifact_idcs + 1), "missed": [], "extra": [], "longshort": list(artifact_idcs)}
+    artifacts = {
+        "ectopic": list(artifact_idcs + 1),
+        "missed": [],
+        "extra": [],
+        "longshort": list(artifact_idcs),
+    }
     return artifacts
 
 
@@ -137,14 +148,18 @@ def test_missed_correction(peaks_missed, artifacts_missed):
 
     peaks_corrected = _correct_artifacts(artifacts_missed, peaks_missed)
 
-    assert np.unique(peaks_corrected).size == (peaks_missed.size + len(artifacts_missed["missed"]))
+    assert np.unique(peaks_corrected).size == (
+        peaks_missed.size + len(artifacts_missed["missed"])
+    )
 
 
 def test_extra_correction(peaks_extra, artifacts_extra):
 
     peaks_corrected = _correct_artifacts(artifacts_extra, peaks_extra)
 
-    assert np.unique(peaks_corrected).size == (peaks_extra.size - len(artifacts_extra["extra"]))
+    assert np.unique(peaks_corrected).size == (
+        peaks_extra.size - len(artifacts_extra["extra"])
+    )
 
 
 def idfn(val):
@@ -154,13 +169,24 @@ def idfn(val):
 
 @pytest.mark.parametrize(
     "peaks_misaligned, iterative, rmssd_diff",
-    [(2, True, 27), (2, False, 27), (4, True, 113), (4, False, 113), (8, True, 444), (8, False, 444)],
+    [
+        (2, True, 27),
+        (2, False, 27),
+        (4, True, 113),
+        (4, False, 113),
+        (8, True, 444),
+        (8, False, 444),
+    ],
     indirect=["peaks_misaligned"],
     ids=idfn,
 )
-def test_misaligned_correction_wrapper(peaks_correct, peaks_misaligned, iterative, rmssd_diff):
+def test_misaligned_correction_wrapper(
+    peaks_correct, peaks_misaligned, iterative, rmssd_diff
+):
 
-    _, peaks_corrected = signal_fixpeaks(peaks_misaligned, sampling_rate=1, iterative=iterative)
+    _, peaks_corrected = signal_fixpeaks(
+        peaks_misaligned, sampling_rate=1, iterative=iterative
+    )
 
     rmssd_correct = compute_rmssd(peaks_correct)
     rmssd_corrected = compute_rmssd(peaks_corrected)
@@ -179,11 +205,44 @@ def test_misaligned_correction_wrapper(peaks_correct, peaks_misaligned, iterativ
     assert int(rmssd_diff_uncorrected - rmssd_diff_corrected) == rmssd_diff
 
 
-@pytest.mark.parametrize("iterative, rmssd_diff", [(True, 3), (False, 3)], ids=idfn)
-def test_extra_correction_wrapper(peaks_correct, peaks_extra, iterative, rmssd_diff):
-
-    _, peaks_corrected = signal_fixpeaks(peaks_extra, sampling_rate=1, iterative=iterative)
-
+@pytest.mark.parametrize(
+    "iterative, method, interval_min, interval_max, rmssd_diff",
+    [
+        (True, "Kubios", 0.5, 1.5, 3),
+        (False, "Kubios", 0.5, 1.5, 3),
+        (True, "neurokit", 0.5, 1.5, 3),
+        (False, "neurokit", 0.5, 1.5, 3),
+    ],
+    ids=idfn,
+)
+def test_extra_correction_wrapper(
+    peaks_correct,
+    peaks_extra,
+    iterative,
+    method,
+    interval_min,
+    interval_max,
+    rmssd_diff,
+):
+    print(peaks_extra)
+    if method == "neurokit":
+        peaks_corrected = signal_fixpeaks(
+            peaks_extra,
+            sampling_rate=1,
+            iterative=iterative,
+            method=method,
+            interval_min=interval_min,
+            interval_max=interval_max,
+        )
+    else:
+        _, peaks_corrected = signal_fixpeaks(
+            peaks_extra,
+            sampling_rate=1,
+            iterative=iterative,
+            method=method,
+            interval_min=interval_min,
+            interval_max=interval_max,
+        )
     rmssd_correct = compute_rmssd(peaks_correct)
     rmssd_corrected = compute_rmssd(peaks_corrected)
     rmssd_uncorrected = compute_rmssd(peaks_extra)
@@ -205,7 +264,9 @@ def test_extra_correction_wrapper(peaks_correct, peaks_extra, iterative, rmssd_d
 @pytest.mark.parametrize("iterative, rmssd_diff", [(True, 13), (False, 13)], ids=idfn)
 def test_missed_correction_wrapper(peaks_correct, peaks_missed, iterative, rmssd_diff):
 
-    _, peaks_corrected = signal_fixpeaks(peaks_missed, sampling_rate=1, iterative=iterative)
+    _, peaks_corrected = signal_fixpeaks(
+        peaks_missed, sampling_rate=1, iterative=iterative
+    )
 
     rmssd_correct = compute_rmssd(peaks_correct)
     rmssd_corrected = compute_rmssd(peaks_corrected)
