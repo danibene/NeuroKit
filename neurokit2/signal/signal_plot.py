@@ -96,6 +96,34 @@ def signal_plot(
             if bool(np.any(np.diff(indices) == 1)) is False:
                 events_columns.append(col)
                 continuous_columns.remove(col)
+    
+    # Tidy legend locations and add labels
+    if labels is None:
+        labels = signal.columns.copy()
+    else:
+        if isinstance(labels, str):
+            n_labels = len([labels])
+            labels = [labels]
+        elif isinstance(labels, list):
+            n_labels = len(labels)
+    
+        if len(signal.columns) == n_labels:
+            rename_dict = dict(zip(signal.columns, labels))
+            signal.rename(columns=rename_dict, inplace=True)
+            continuous_columns = rename_dict[continuous_columns]
+            events_columns = rename_dict[events_columns]
+            
+        elif len(signal[continuous_columns].columns) != n_labels:
+            signal.rename(columns=dict(zip(continous_columns, labels)), inplace=True)
+            continuous_columns = labels
+            
+        else:
+            raise ValueError(
+                "NeuroKit error: signal_plot(): number of labels does not equal the number of plotted signals."
+            )
+                
+            
+        
 
     # Adjust for sampling rate
     if sampling_rate is not None:
@@ -114,7 +142,11 @@ def signal_plot(
         for col in events_columns:
             vector = signal[col]
             events.append(np.where(vector == np.max(vector.unique()))[0])
-        events_plot(events, signal=signal[continuous_columns])
+        events_dict = {
+            "onset": events,
+            "condition": events_columns
+            }
+        events_plot(events_dict, signal=signal[continuous_columns])
         if sampling_rate is None and signal.index.is_integer():
             plt.gca().set_xlabel("Samples")
         else:
@@ -141,11 +173,12 @@ def signal_plot(
         # Plot
         if standardize is True:
             signal[continuous_columns] = nk_standardize(signal[continuous_columns])
-
+            
         if subplots is True:
             _, axes = plt.subplots(nrows=len(continuous_columns), ncols=1, sharex=True, **kwargs)
             for ax, col, color in zip(axes, continuous_columns, colors):
                 ax.plot(signal[col], c=color, **kwargs)
+                ax.legend([col], loc=1)
         else:
             _ = signal[continuous_columns].plot(subplots=False, sharex=True, **kwargs)
 
@@ -154,23 +187,4 @@ def signal_plot(
         else:
             plt.xlabel(title_x)
 
-    # Tidy legend locations and add labels
-    if labels is None:
-        labels = continuous_columns.copy()
 
-    if isinstance(labels, str):
-        n_labels = len([labels])
-        labels = [labels]
-    elif isinstance(labels, list):
-        n_labels = len(labels)
-
-    if len(signal[continuous_columns].columns) != n_labels:
-        raise ValueError(
-            "NeuroKit error: signal_plot(): number of labels does not equal the number of plotted signals."
-        )
-
-    if subplots is False:
-        plt.legend(labels, loc=1)
-    else:
-        for i, label in enumerate(labels):
-            axes[i].legend([label], loc=1)
