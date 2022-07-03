@@ -92,7 +92,7 @@ def events_plot(events, signal=None, color="red", linestyle="--"):
       plt.close()
 
     """
-    conditions_list is None
+    conditions_list = None
     if isinstance(events, dict):
         if "condition" in events.keys():
             events_list = []
