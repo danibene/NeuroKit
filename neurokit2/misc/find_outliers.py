@@ -136,9 +136,9 @@ def _find_outliers_percentiles(data,
     right_threshold = (np.percentile(data, percentile_threshold[1]) + 
                       multiplier_range*inter_percentile_range)
     if side == "both":
-        outliers = (data > left_threshold) & (data < right_threshold)
+        outliers = ((data < left_threshold) | (data > right_threshold))
     elif side == "left":
-        outliers = data > left_threshold
+        outliers = data < left_threshold
     elif side == "right":
-        outliers = data < right_threshold
+        outliers = data > right_threshold
     return outliers
