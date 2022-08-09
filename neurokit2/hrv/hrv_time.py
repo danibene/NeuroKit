@@ -201,8 +201,8 @@ def hrv_time(data, rri_time=None, data_format="peaks", sampling_rate=1000, show=
     # Extreme-based
     nn50 = np.sum(np.abs(diff_rri) > 50)
     nn20 = np.sum(np.abs(diff_rri) > 20)
-    out["pNN50"] = nn50 / len(rri) * 100
-    out["pNN20"] = nn20 / len(rri) * 100
+    out["pNN50"] = nn50 / (len(diff_rri) + 1) * 100
+    out["pNN20"] = nn20 / (len(diff_rri) + 1) * 100
     out["MinNN"] = np.nanmin(rri)
     out["MaxNN"] = np.nanmax(rri)
 
