@@ -1,5 +1,5 @@
 import numpy as np
-
+import itertools
 
 def find_successive_intervals(intervals, intervals_time=None, thresh_unequal=2, n_diff=1):
     """Identify successive intervals
@@ -57,3 +57,17 @@ def find_successive_intervals(intervals, intervals_time=None, thresh_unequal=2, 
     successive_intervals = abs_error_intervals_ref_time <= thresh_unequal
 
     return np.array(successive_intervals)
+
+
+def find_successive_groups(signal, successive=None):
+    index = 0
+    successive_groups = []
+    if successive is None:
+        successive = np.array([True]*(len(signal)-1))
+    for event, group in itertools.groupby(successive):
+        if event:
+            duration = len(list(group))
+            successive_groups.append(signal[index: index + duration + 1])
+            index += duration + 1
+            
+    return successive_groups
