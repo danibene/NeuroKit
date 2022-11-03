@@ -9,7 +9,7 @@ from .ecg_phase import ecg_phase
 from .ecg_quality import ecg_quality
 
 
-def ecg_process(ecg_signal, sampling_rate=1000, method="neurokit"):
+def ecg_process(ecg_signal, sampling_rate=1000, method="neurokit", report=None, **kwargs):
     """**Automated pipeline for preprocessing an ECG signal**
 
     This function runs different preprocessing steps. **Help us improve the documentation of
@@ -23,6 +23,13 @@ def ecg_process(ecg_signal, sampling_rate=1000, method="neurokit"):
         The sampling frequency of ``ecg_signal`` (in Hz, i.e., samples/second). Defaults to 1000.
     method : str
         The processing pipeline to apply. Defaults to ``"neurokit"``.
+    report : str
+        The filename of a report containing description and figures of processing
+        (e.g. ``"myreport.html"``). Needs to be supplied if a report file
+        should be generated. Defaults to ``None``.
+    **kwargs
+        Other arguments to be passed to specific methods. For more information,
+        see :func:`.ecg_methods`.
 
     Returns
     -------
