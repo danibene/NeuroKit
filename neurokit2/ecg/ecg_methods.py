@@ -13,11 +13,11 @@ def ecg_methods(
     method_peaks="default",
     **kwargs,
 ):
-    """**PPG Preprocessing Methods**
+    """**ECG Preprocessing Methods**
 
     This function analyzes and specifies the methods used in the preprocessing, and create a
-    textual description of the methods used. It is used by :func:`ppg_process()` to dispatch the
-    correct methods to each subroutine of the pipeline and :func:`ppg_report()` to create a
+    textual description of the methods used. It is used by :func:`ecg_process()` to dispatch the
+    correct methods to each subroutine of the pipeline and to create a
     preprocessing report.
 
     Parameters
@@ -115,33 +115,9 @@ def ecg_methods(
     report_info["text_cleaning"] = f"The raw signal, sampled at {sampling_rate} Hz, "
     if method_cleaning in ["neurokit"]:
         report_info["text_cleaning"] = (
-            report_info["text_cleaning"]
-            + "was preprocessed using a bandpass filter ([0.5 - 8 Hz], Butterworth 3rd order"
-            + "; high-pass butterworth filter (order = 5), followed by powerline filtering "
-            + "following "
-        )
-        refs.append(
-            "Elgendi M, Norton I, Brearley M, Abbott D, Schuurmans D (2013) Systolic Peak Detection"
-            + " in Acceleration Photoplethysmograms Measured from Emergency Responders in Tropical"
-            + " Conditions. PLoS ONE 8(10): e76585. doi:10.1371/journal.pone.0076585."
-        )
-    elif method_cleaning in ["nabian2018"]:
-        if report_info["heart_rate"] is None:
-            cutoff = "of 40 Hz"
-        else:
-            cutoff = f'based on the heart rate of {report_info["heart_rate"]} bpm'
-
-        report_info["text_cleaning"] = (
-            report_info["text_cleaning"]
-            + "was preprocessed using a lowpass filter (with a cutoff frequency "
-            + f"{cutoff}, butterworth 2nd order; following Nabian et al., 2018)."
-        )
-
-        refs.append(
-            "Nabian, M., Yin, Y., Wormwood, J., Quigley, K. S., Barrett, L. F., & Ostadabbas, S."
-            + " (2018). An open-source feature extraction tool for the analysis of peripheral "
-            + "physiological data. IEEE Journal of Translational Engineering in Health and Medicine"
-            + ", 6, 1-11."
+            + "was preprocessed using a 0.5 Hz high-pass butterworth filter (order = 5)"
+            + "followed by powerline filtering (with the powerline frequency set to " + 
+            + str(report_info["kwargs_cleaning"]["powerline"]) + " Hz)."
         )
     elif method_cleaning is None or method_cleaning.lower() == "none":
         report_info["text_cleaning"] = (
@@ -154,15 +130,8 @@ def ecg_methods(
 
     # 2. Peaks
     # ----------
-    if method_peaks in ["elgendi"]:
-        report_info[
-            "text_peaks"
-        ] = "The peak detection was carried out using the method described in Elgendi et al. (2013)."
-        refs.append(
-            "Elgendi M, Norton I, Brearley M, Abbott D, Schuurmans D (2013) Systolic Peak Detection"
-            + " in Acceleration Photoplethysmograms Measured from Emergency Responders in Tropical"
-            + " Conditions. PLoS ONE 8(10): e76585. doi:10.1371/journal.pone.0076585."
-        )
+    report_info["text_peaks"] = "The peak detection was carried out using the " + method + " method."
+    
     report_info["references"] = list(np.unique(refs))
 
     # Print text

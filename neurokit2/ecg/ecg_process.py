@@ -7,6 +7,7 @@ from .ecg_delineate import ecg_delineate
 from .ecg_peaks import ecg_peaks
 from .ecg_phase import ecg_phase
 from .ecg_quality import ecg_quality
+from .ecg_methods import ecg_methods
 
 
 def ecg_process(ecg_signal, sampling_rate=1000, method="neurokit", report=None, **kwargs):
@@ -93,7 +94,19 @@ def ecg_process(ecg_signal, sampling_rate=1000, method="neurokit", report=None, 
     # Sanitize input
     ecg_signal = signal_sanitize(ecg_signal)
 
-    ecg_cleaned = ecg_clean(ecg_signal, sampling_rate=sampling_rate, method=method)
+    methods = ecg_methods(sampling_rate=sampling_rate, method=method, **kwargs)
+
+    if methods["method_cleaning"] is None or methods["method_cleaning"].lower() == "none":
+        ecg_cleaned = ecg_signal
+    else:
+        # Clean signal
+        ecg_cleaned = ecg_clean(
+            ecg_signal,
+            sampling_rate=sampling_rate,
+            method=methods["method_cleaning"],
+            **methods["kwargs_cleaning"]
+        )
+
     # R-peaks
     (
         instant_peaks,
