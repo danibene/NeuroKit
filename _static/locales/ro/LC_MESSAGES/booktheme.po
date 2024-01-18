@@ -8,14 +8,20 @@ msgstr ""
 "Language: ro\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Descarcă această pagină"
+msgid "Download source file"
+msgstr "Descărcați fișierul sursă"
+
+msgid "suggest edit"
+msgstr "sugerează editare"
+
+msgid "Toggle navigation"
+msgstr "Comutare navigare"
+
+msgid "open issue"
+msgstr "problema deschisă"
 
 msgid "Download notebook file"
 msgstr "Descărcați fișierul notebook"
-
-msgid "Open an issue"
-msgstr "Deschideți o problemă"
 
 msgid "repository"
 msgstr "repertoriu"
@@ -23,11 +29,14 @@ msgstr "repertoriu"
 msgid "Theme by the"
 msgstr "Tema de"
 
-msgid "Contents"
-msgstr "Cuprins"
+msgid "Print to PDF"
+msgstr "Imprimați în PDF"
 
-msgid "next page"
-msgstr "pagina următoare"
+msgid "Download this page"
+msgstr "Descarcă această pagină"
+
+msgid "Copyright"
+msgstr "Drepturi de autor"
 
 msgid "Last updated on"
 msgstr "Ultima actualizare la"
@@ -35,47 +44,32 @@ msgstr "Ultima actualizare la"
 msgid "Launch"
 msgstr "Lansa"
 
-msgid "Edit this page"
-msgstr "Editați această pagină"
-
-msgid "Source repository"
-msgstr "Depozit sursă"
-
-msgid "Download source file"
-msgstr "Descărcați fișierul sursă"
-
-msgid "Sphinx Book Theme"
-msgstr "Tema Sphinx Book"
-
-msgid "Copyright"
-msgstr "Drepturi de autor"
+msgid "Open an issue"
+msgstr "Deschideți o problemă"
 
 msgid "Fullscreen mode"
 msgstr "Modul ecran întreg"
 
-msgid "Search the docs ..."
-msgstr "Căutați documente ..."
+msgid "Sphinx Book Theme"
+msgstr "Tema Sphinx Book"
 
-msgid "suggest edit"
-msgstr "sugerează editare"
+msgid "Contents"
+msgstr "Cuprins"
 
-msgid "Search this book..."
-msgstr "Căutați în această carte ..."
+msgid "Edit this page"
+msgstr "Editați această pagină"
+
+msgid "next page"
+msgstr "pagina următoare"
+
+msgid "Source repository"
+msgstr "Depozit sursă"
 
 msgid "By"
 msgstr "De"
 
-msgid "open issue"
-msgstr "problema deschisă"
-
-msgid "Print to PDF"
-msgstr "Imprimați în PDF"
+msgid "By the"
+msgstr "Langa"
 
 msgid "previous page"
 msgstr "pagina anterioară"
-
-msgid "Toggle navigation"
-msgstr "Comutare navigare"
-
-msgid "By the"
-msgstr "Langa"

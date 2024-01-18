@@ -8,14 +8,20 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Téléchargez cette page"
+msgid "Download source file"
+msgstr "Télécharger le fichier source"
+
+msgid "suggest edit"
+msgstr "suggestion de modification"
+
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
+
+msgid "open issue"
+msgstr "signaler un problème"
 
 msgid "Download notebook file"
 msgstr "Télécharger le fichier notebook"
-
-msgid "Open an issue"
-msgstr "Ouvrez un problème"
 
 msgid "repository"
 msgstr "dépôt"
@@ -23,11 +29,14 @@ msgstr "dépôt"
 msgid "Theme by the"
 msgstr "Thème par le"
 
-msgid "Contents"
-msgstr "Contenu"
+msgid "Print to PDF"
+msgstr "Imprimer au format PDF"
 
-msgid "next page"
-msgstr "page suivante"
+msgid "Download this page"
+msgstr "Téléchargez cette page"
+
+msgid "Copyright"
+msgstr "droits d'auteur"
 
 msgid "Last updated on"
 msgstr "Dernière mise à jour le"
@@ -35,47 +44,32 @@ msgstr "Dernière mise à jour le"
 msgid "Launch"
 msgstr "lancement"
 
-msgid "Edit this page"
-msgstr "Modifier cette page"
-
-msgid "Source repository"
-msgstr "Dépôt source"
-
-msgid "Download source file"
-msgstr "Télécharger le fichier source"
-
-msgid "Sphinx Book Theme"
-msgstr "Thème du livre Sphinx"
-
-msgid "Copyright"
-msgstr "droits d'auteur"
+msgid "Open an issue"
+msgstr "Ouvrez un problème"
 
 msgid "Fullscreen mode"
 msgstr "Mode plein écran"
 
-msgid "Search the docs ..."
-msgstr "Rechercher dans les documents ..."
+msgid "Sphinx Book Theme"
+msgstr "Thème du livre Sphinx"
 
-msgid "suggest edit"
-msgstr "suggestion de modification"
+msgid "Contents"
+msgstr "Contenu"
 
-msgid "Search this book..."
-msgstr "Rechercher dans ce livre ..."
+msgid "Edit this page"
+msgstr "Modifier cette page"
+
+msgid "next page"
+msgstr "page suivante"
+
+msgid "Source repository"
+msgstr "Dépôt source"
 
 msgid "By"
 msgstr "Par"
 
-msgid "open issue"
-msgstr "signaler un problème"
-
-msgid "Print to PDF"
-msgstr "Imprimer au format PDF"
+msgid "By the"
+msgstr "Par le"
 
 msgid "previous page"
 msgstr "page précédente"
-
-msgid "Toggle navigation"
-msgstr "Basculer la navigation"
-
-msgid "By the"
-msgstr "Par le"

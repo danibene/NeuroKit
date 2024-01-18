@@ -8,14 +8,20 @@ msgstr ""
 "Language: lt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Atsisiųskite šį puslapį"
+msgid "Download source file"
+msgstr "Atsisiųsti šaltinio failą"
+
+msgid "suggest edit"
+msgstr "pasiūlyti redaguoti"
+
+msgid "Toggle navigation"
+msgstr "Perjungti naršymą"
+
+msgid "open issue"
+msgstr "atviras klausimas"
 
 msgid "Download notebook file"
 msgstr "Atsisiųsti nešiojamojo kompiuterio failą"
-
-msgid "Open an issue"
-msgstr "Atidarykite problemą"
 
 msgid "repository"
 msgstr "saugykla"
@@ -23,11 +29,14 @@ msgstr "saugykla"
 msgid "Theme by the"
 msgstr "Tema"
 
-msgid "Contents"
-msgstr "Turinys"
+msgid "Print to PDF"
+msgstr "Spausdinti į PDF"
 
-msgid "next page"
-msgstr "Kitas puslapis"
+msgid "Download this page"
+msgstr "Atsisiųskite šį puslapį"
+
+msgid "Copyright"
+msgstr "Autorių teisės"
 
 msgid "Last updated on"
 msgstr "Paskutinį kartą atnaujinta"
@@ -35,47 +44,32 @@ msgstr "Paskutinį kartą atnaujinta"
 msgid "Launch"
 msgstr "Paleiskite"
 
-msgid "Edit this page"
-msgstr "Redaguoti šį puslapį"
-
-msgid "Source repository"
-msgstr "Šaltinio saugykla"
-
-msgid "Download source file"
-msgstr "Atsisiųsti šaltinio failą"
-
-msgid "Sphinx Book Theme"
-msgstr "Sfinkso knygos tema"
-
-msgid "Copyright"
-msgstr "Autorių teisės"
+msgid "Open an issue"
+msgstr "Atidarykite problemą"
 
 msgid "Fullscreen mode"
 msgstr "Pilno ekrano režimas"
 
-msgid "Search the docs ..."
-msgstr "Ieškoti dokumentuose ..."
+msgid "Sphinx Book Theme"
+msgstr "Sfinkso knygos tema"
 
-msgid "suggest edit"
-msgstr "pasiūlyti redaguoti"
+msgid "Contents"
+msgstr "Turinys"
 
-msgid "Search this book..."
-msgstr "Ieškoti šioje knygoje ..."
+msgid "Edit this page"
+msgstr "Redaguoti šį puslapį"
+
+msgid "next page"
+msgstr "Kitas puslapis"
+
+msgid "Source repository"
+msgstr "Šaltinio saugykla"
 
 msgid "By"
 msgstr "Iki"
 
-msgid "open issue"
-msgstr "atviras klausimas"
-
-msgid "Print to PDF"
-msgstr "Spausdinti į PDF"
+msgid "By the"
+msgstr "Prie"
 
 msgid "previous page"
 msgstr "Ankstesnis puslapis"
-
-msgid "Toggle navigation"
-msgstr "Perjungti naršymą"
-
-msgid "By the"
-msgstr "Prie"

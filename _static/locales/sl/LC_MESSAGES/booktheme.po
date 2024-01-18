@@ -8,14 +8,20 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Prenesite to stran"
+msgid "Download source file"
+msgstr "Prenesite izvorno datoteko"
+
+msgid "suggest edit"
+msgstr "predlagajte urejanje"
+
+msgid "Toggle navigation"
+msgstr "Preklopi navigacijo"
+
+msgid "open issue"
+msgstr "odprto vprašanje"
 
 msgid "Download notebook file"
 msgstr "Prenesite datoteko zvezka"
-
-msgid "Open an issue"
-msgstr "Odprite številko"
 
 msgid "repository"
 msgstr "odlagališče"
@@ -23,11 +29,14 @@ msgstr "odlagališče"
 msgid "Theme by the"
 msgstr "Tema avtorja"
 
-msgid "Contents"
-msgstr "Vsebina"
+msgid "Print to PDF"
+msgstr "Natisni v PDF"
 
-msgid "next page"
-msgstr "Naslednja stran"
+msgid "Download this page"
+msgstr "Prenesite to stran"
+
+msgid "Copyright"
+msgstr "avtorske pravice"
 
 msgid "Last updated on"
 msgstr "Nazadnje posodobljeno dne"
@@ -35,47 +44,32 @@ msgstr "Nazadnje posodobljeno dne"
 msgid "Launch"
 msgstr "Kosilo"
 
-msgid "Edit this page"
-msgstr "Uredite to stran"
-
-msgid "Source repository"
-msgstr "Izvorno skladišče"
-
-msgid "Download source file"
-msgstr "Prenesite izvorno datoteko"
-
-msgid "Sphinx Book Theme"
-msgstr "Tema knjige Sphinx"
-
-msgid "Copyright"
-msgstr "avtorske pravice"
+msgid "Open an issue"
+msgstr "Odprite številko"
 
 msgid "Fullscreen mode"
 msgstr "Celozaslonski način"
 
-msgid "Search the docs ..."
-msgstr "Poiščite dokumente ..."
+msgid "Sphinx Book Theme"
+msgstr "Tema knjige Sphinx"
 
-msgid "suggest edit"
-msgstr "predlagajte urejanje"
+msgid "Contents"
+msgstr "Vsebina"
 
-msgid "Search this book..."
-msgstr "Poiščite to knjigo ..."
+msgid "Edit this page"
+msgstr "Uredite to stran"
+
+msgid "next page"
+msgstr "Naslednja stran"
+
+msgid "Source repository"
+msgstr "Izvorno skladišče"
 
 msgid "By"
 msgstr "Avtor"
 
-msgid "open issue"
-msgstr "odprto vprašanje"
-
-msgid "Print to PDF"
-msgstr "Natisni v PDF"
+msgid "By the"
+msgstr "Avtor"
 
 msgid "previous page"
 msgstr "Prejšnja stran"
-
-msgid "Toggle navigation"
-msgstr "Preklopi navigacijo"
-
-msgid "By the"
-msgstr "Avtor"

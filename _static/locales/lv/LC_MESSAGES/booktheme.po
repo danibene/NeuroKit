@@ -8,14 +8,20 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Lejupielādējiet šo lapu"
+msgid "Download source file"
+msgstr "Lejupielādēt avota failu"
+
+msgid "suggest edit"
+msgstr "ieteikt rediģēt"
+
+msgid "Toggle navigation"
+msgstr "Pārslēgt navigāciju"
+
+msgid "open issue"
+msgstr "atklāts jautājums"
 
 msgid "Download notebook file"
 msgstr "Lejupielādēt piezīmju grāmatiņu"
-
-msgid "Open an issue"
-msgstr "Atveriet problēmu"
 
 msgid "repository"
 msgstr "krātuve"
@@ -23,11 +29,14 @@ msgstr "krātuve"
 msgid "Theme by the"
 msgstr "Autora tēma"
 
-msgid "Contents"
-msgstr "Saturs"
+msgid "Print to PDF"
+msgstr "Drukāt PDF formātā"
 
-msgid "next page"
-msgstr "nākamā lapaspuse"
+msgid "Download this page"
+msgstr "Lejupielādējiet šo lapu"
+
+msgid "Copyright"
+msgstr "Autortiesības"
 
 msgid "Last updated on"
 msgstr "Pēdējoreiz atjaunināts"
@@ -35,47 +44,32 @@ msgstr "Pēdējoreiz atjaunināts"
 msgid "Launch"
 msgstr "Uzsākt"
 
-msgid "Edit this page"
-msgstr "Rediģēt šo lapu"
-
-msgid "Source repository"
-msgstr "Avota krātuve"
-
-msgid "Download source file"
-msgstr "Lejupielādēt avota failu"
-
-msgid "Sphinx Book Theme"
-msgstr "Sfinksa grāmatas tēma"
-
-msgid "Copyright"
-msgstr "Autortiesības"
+msgid "Open an issue"
+msgstr "Atveriet problēmu"
 
 msgid "Fullscreen mode"
 msgstr "Pilnekrāna režīms"
 
-msgid "Search the docs ..."
-msgstr "Meklēt dokumentos ..."
+msgid "Sphinx Book Theme"
+msgstr "Sfinksa grāmatas tēma"
 
-msgid "suggest edit"
-msgstr "ieteikt rediģēt"
+msgid "Contents"
+msgstr "Saturs"
 
-msgid "Search this book..."
-msgstr "Meklēt šajā grāmatā ..."
+msgid "Edit this page"
+msgstr "Rediģēt šo lapu"
+
+msgid "next page"
+msgstr "nākamā lapaspuse"
+
+msgid "Source repository"
+msgstr "Avota krātuve"
 
 msgid "By"
 msgstr "Autors"
 
-msgid "open issue"
-msgstr "atklāts jautājums"
-
-msgid "Print to PDF"
-msgstr "Drukāt PDF formātā"
+msgid "By the"
+msgstr "Ar"
 
 msgid "previous page"
 msgstr "iepriekšējā lapa"
-
-msgid "Toggle navigation"
-msgstr "Pārslēgt navigāciju"
-
-msgid "By the"
-msgstr "Ar"

@@ -8,14 +8,20 @@ msgstr ""
 "Language: cs\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Stáhněte si tuto stránku"
+msgid "Download source file"
+msgstr "Stáhněte si zdrojový soubor"
+
+msgid "suggest edit"
+msgstr "navrhnout úpravy"
+
+msgid "Toggle navigation"
+msgstr "Přepnout navigaci"
+
+msgid "open issue"
+msgstr "otevřené číslo"
 
 msgid "Download notebook file"
 msgstr "Stáhnout soubor poznámkového bloku"
-
-msgid "Open an issue"
-msgstr "Otevřete problém"
 
 msgid "repository"
 msgstr "úložiště"
@@ -23,11 +29,14 @@ msgstr "úložiště"
 msgid "Theme by the"
 msgstr "Téma od"
 
-msgid "Contents"
-msgstr "Obsah"
+msgid "Print to PDF"
+msgstr "Tisk do PDF"
 
-msgid "next page"
-msgstr "další strana"
+msgid "Download this page"
+msgstr "Stáhněte si tuto stránku"
+
+msgid "Copyright"
+msgstr "autorská práva"
 
 msgid "Last updated on"
 msgstr "Naposledy aktualizováno"
@@ -35,47 +44,32 @@ msgstr "Naposledy aktualizováno"
 msgid "Launch"
 msgstr "Zahájení"
 
-msgid "Edit this page"
-msgstr "Upravit tuto stránku"
-
-msgid "Source repository"
-msgstr "Zdrojové úložiště"
-
-msgid "Download source file"
-msgstr "Stáhněte si zdrojový soubor"
-
-msgid "Sphinx Book Theme"
-msgstr "Téma knihy Sfinga"
-
-msgid "Copyright"
-msgstr "autorská práva"
+msgid "Open an issue"
+msgstr "Otevřete problém"
 
 msgid "Fullscreen mode"
 msgstr "Režim celé obrazovky"
 
-msgid "Search the docs ..."
-msgstr "Hledat v dokumentech ..."
+msgid "Sphinx Book Theme"
+msgstr "Téma knihy Sfinga"
 
-msgid "suggest edit"
-msgstr "navrhnout úpravy"
+msgid "Contents"
+msgstr "Obsah"
 
-msgid "Search this book..."
-msgstr "Hledat v této knize ..."
+msgid "Edit this page"
+msgstr "Upravit tuto stránku"
+
+msgid "next page"
+msgstr "další strana"
+
+msgid "Source repository"
+msgstr "Zdrojové úložiště"
 
 msgid "By"
 msgstr "Podle"
 
-msgid "open issue"
-msgstr "otevřené číslo"
-
-msgid "Print to PDF"
-msgstr "Tisk do PDF"
+msgid "By the"
+msgstr "Podle"
 
 msgid "previous page"
 msgstr "předchozí stránka"
-
-msgid "Toggle navigation"
-msgstr "Přepnout navigaci"
-
-msgid "By the"
-msgstr "Podle"

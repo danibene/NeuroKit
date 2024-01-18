@@ -8,14 +8,20 @@ msgstr ""
 "Language: uk\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "Download this page"
-msgstr "Завантажте цю сторінку"
+msgid "Download source file"
+msgstr "Завантажити вихідний файл"
+
+msgid "suggest edit"
+msgstr "запропонувати редагувати"
+
+msgid "Toggle navigation"
+msgstr "Переключити навігацію"
+
+msgid "open issue"
+msgstr "відкритий випуск"
 
 msgid "Download notebook file"
 msgstr "Завантажте файл блокнота"
-
-msgid "Open an issue"
-msgstr "Відкрийте випуск"
 
 msgid "repository"
 msgstr "сховище"
@@ -23,11 +29,14 @@ msgstr "сховище"
 msgid "Theme by the"
 msgstr "Тема від"
 
-msgid "Contents"
-msgstr "Зміст"
+msgid "Print to PDF"
+msgstr "Друк у форматі PDF"
 
-msgid "next page"
-msgstr "Наступна сторінка"
+msgid "Download this page"
+msgstr "Завантажте цю сторінку"
+
+msgid "Copyright"
+msgstr "Авторське право"
 
 msgid "Last updated on"
 msgstr "Останнє оновлення:"
@@ -35,47 +44,32 @@ msgstr "Останнє оновлення:"
 msgid "Launch"
 msgstr "Запуск"
 
-msgid "Edit this page"
-msgstr "Редагувати цю сторінку"
-
-msgid "Source repository"
-msgstr "Джерело сховища"
-
-msgid "Download source file"
-msgstr "Завантажити вихідний файл"
-
-msgid "Sphinx Book Theme"
-msgstr "Тема книги \"Сфінкс\""
-
-msgid "Copyright"
-msgstr "Авторське право"
+msgid "Open an issue"
+msgstr "Відкрийте випуск"
 
 msgid "Fullscreen mode"
 msgstr "Повноекранний режим"
 
-msgid "Search the docs ..."
-msgstr "Шукати в документах ..."
+msgid "Sphinx Book Theme"
+msgstr "Тема книги \"Сфінкс\""
 
-msgid "suggest edit"
-msgstr "запропонувати редагувати"
+msgid "Contents"
+msgstr "Зміст"
 
-msgid "Search this book..."
-msgstr "Шукати в цій книзі ..."
+msgid "Edit this page"
+msgstr "Редагувати цю сторінку"
+
+msgid "next page"
+msgstr "Наступна сторінка"
+
+msgid "Source repository"
+msgstr "Джерело сховища"
 
 msgid "By"
 msgstr "Автор"
 
-msgid "open issue"
-msgstr "відкритий випуск"
-
-msgid "Print to PDF"
-msgstr "Друк у форматі PDF"
+msgid "By the"
+msgstr "По"
 
 msgid "previous page"
 msgstr "Попередня сторінка"
-
-msgid "Toggle navigation"
-msgstr "Переключити навігацію"
-
-msgid "By the"
-msgstr "По"
