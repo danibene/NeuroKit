@@ -15,8 +15,22 @@ import os
 import numpy as np
 import pandas as pd
 import wfdb
+import neurokit2 as nk
 
-data_files = ["mit-bih-long-term-ecg-database-1.0.0/" + file for file in os.listdir("mit-bih-long-term-ecg-database-1.0.0") if ".dat" in file]
+database_path = "./mit-bih-long-term-ecg-database-1.0.0/"
+
+# Check if expected folder exists
+if not os.path.exists(database_path):
+    url = "https://physionet.org/static/published-projects/ltdb/mit-bih-long-term-ecg-database-1.0.0.zip"
+    download_successful = nk.download_zip(url, database_path)
+    if not download_successful:
+        raise ValueError(
+            "NeuroKit error: download of MIT-Arrhythmia database failed. "
+            "Please download it manually from https://alpha.physionet.org/content/mitdb/1.0.0/ "
+            "and unzip it in the same folder as this script."
+        )
+
+data_files = [database_path + file for file in os.listdir(database_path) if ".dat" in file]
 
 
 
