@@ -7,42 +7,42 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>neurokit2.ecg.ecg_findpeaks &#8212; NeuroKit2 0.2.7 documentation</title>
+    <title>neurokit2.ecg.ecg_findpeaks &#8212; NeuroKit2 0.2.9 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../../_static/documentation_options.js?v=ea69a5af"></script>
-    <script src="../../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../../_static/documentation_options.js?v=1b33a64c"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '_modules/neurokit2/ecg/ecg_findpeaks';</script>
     <link rel="icon" href="../../../_static/icon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -56,28 +56,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -100,12 +95,14 @@
 </form></div>
   </div>
 
-  <header>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
-  </header>
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
@@ -129,6 +126,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../../index.html">
   
@@ -141,8 +140,8 @@
       
     
     
-    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.7 documentation - Home"/>
-    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.7 documentation - Home"/>`);</script>
+    <img src="../../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.9 documentation - Home"/>
+    <script>document.write(`<img src="../../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.9 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -150,7 +149,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -165,11 +164,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../cite_us.html">Cite us</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../examples/index.html">Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Varability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
@@ -185,8 +184,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../examples/misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../functions/bio.html">Bio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../functions/ecg.html">ECG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../functions/ppg.html">PPG</a></li>
@@ -208,15 +207,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../functions/misc.html">Misc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../functions/benchmark.html">Benchmarking</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../resources/contributing.html">Contributing guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../resources/recording.html">Recording good quality signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../resources/resources.html">Additional Resources</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
@@ -227,7 +226,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../studies/eog_blinktemplate.html">EOG blink template</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
 </ul>
 
@@ -244,7 +243,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -253,14 +252,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -337,10 +336,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -348,7 +347,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -384,6 +383,9 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">scipy.signal</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">warn</span>
+<span class="kn">from</span> <span class="nn">bisect</span> <span class="kn">import</span> <span class="n">insort</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
 
 <span class="kn">from</span> <span class="nn">..signal</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">signal_findpeaks</span><span class="p">,</span>
@@ -392,6 +394,7 @@ document.write(`
     <span class="n">signal_smooth</span><span class="p">,</span>
     <span class="n">signal_zerocrossings</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="kn">from</span> <span class="nn">..misc</span> <span class="kn">import</span> <span class="n">NeuroKitWarning</span>
 
 
 <div class="viewcode-block" id="ecg_findpeaks">
@@ -487,8 +490,15 @@ document.write(`
         <span class="k">return</span> <span class="n">_ecg_findpeaks_WT</span>
     <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rodrigues2020&quot;</span><span class="p">,</span> <span class="s2">&quot;rodrigues2021&quot;</span><span class="p">,</span> <span class="s2">&quot;rodrigues&quot;</span><span class="p">,</span> <span class="s2">&quot;asi&quot;</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">_ecg_findpeaks_rodrigues</span>
-    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vg&quot;</span><span class="p">,</span> <span class="s2">&quot;vgraph&quot;</span><span class="p">,</span> <span class="s2">&quot;koka2022&quot;</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="n">_ecg_findpeaks_vgraph</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;vg&quot;</span><span class="p">,</span> <span class="s2">&quot;vgraph&quot;</span><span class="p">,</span> <span class="s2">&quot;fastnvg&quot;</span><span class="p">,</span> <span class="s2">&quot;emrich&quot;</span><span class="p">,</span> <span class="s2">&quot;emrich2023&quot;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">_ecg_findpeaks_visibilitygraph</span>
+    <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;koka2022&quot;</span><span class="p">,</span> <span class="s2">&quot;koka&quot;</span><span class="p">]:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;The &#39;koka2022&#39; method has been replaced by &#39;emrich2023&#39;.&quot;</span>
+            <span class="s2">&quot; Please replace method=&#39;koka2022&#39; by method=&#39;emrich2023&#39;.&quot;</span><span class="p">,</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">NeuroKitWarning</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">_ecg_findpeaks_visibilitygraph</span>
     <span class="k">elif</span> <span class="n">method</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;promac&quot;</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">]:</span>
         <span class="k">return</span> <span class="n">_ecg_findpeaks_promac</span>
     <span class="k">else</span><span class="p">:</span>
@@ -719,7 +729,7 @@ document.write(`
 <span class="sd">    - Hamilton, Open Source ECG Analysis Software Documentation, E.P.Limited, 2002.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">diff</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span>
 
     <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.08</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">))</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.08</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span>
@@ -729,12 +739,12 @@ document.write(`
 
     <span class="n">ma</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="n">n_pks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">n_pks</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([],</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
     <span class="n">n_pks_ave</span> <span class="o">=</span> <span class="mf">0.0</span>
-    <span class="n">s_pks</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">s_pks</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([],</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
     <span class="n">s_pks_ave</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">QRS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">RR</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">RR</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([],</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
     <span class="n">RR_ave</span> <span class="o">=</span> <span class="mf">0.0</span>
 
     <span class="n">th</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -743,46 +753,39 @@ document.write(`
     <span class="n">idx</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">peaks</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ma</span><span class="p">)):</span>  <span class="c1"># pylint: disable=C0200,R1702</span>
-        <span class="k">if</span> <span class="p">(</span>
-            <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ma</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">ma</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">ma</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">ma</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">ma</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="p">):</span>  <span class="c1"># pylint: disable=R1716</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ma</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>  <span class="c1"># pylint: disable=C0200,R1702</span>
+        <span class="k">if</span> <span class="n">ma</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">ma</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">and</span> <span class="n">ma</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">ma</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>  <span class="c1"># pylint: disable=R1716</span>
             <span class="n">peak</span> <span class="o">=</span> <span class="n">i</span>
             <span class="n">peaks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">peak</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">ma</span><span class="p">[</span><span class="n">peak</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">th</span> <span class="ow">and</span> <span class="p">(</span><span class="n">peak</span> <span class="o">-</span> <span class="n">QRS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">:</span>
                 <span class="n">QRS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">peak</span><span class="p">)</span>
                 <span class="n">idx</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">peak</span><span class="p">)</span>
                 <span class="n">s_pks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ma</span><span class="p">[</span><span class="n">peak</span><span class="p">])</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_pks</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
-                    <span class="n">s_pks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
                 <span class="n">s_pks_ave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s_pks</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="n">RR_ave</span> <span class="o">!=</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">QRS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">QRS</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">RR_ave</span><span class="p">:</span>
                     <span class="n">missed_peaks</span> <span class="o">=</span> <span class="n">peaks</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+                    <span class="n">missed_peak_added</span> <span class="o">=</span> <span class="kc">False</span>
                     <span class="k">for</span> <span class="n">missed_peak</span> <span class="ow">in</span> <span class="n">missed_peaks</span><span class="p">:</span>
                         <span class="k">if</span> <span class="p">(</span>
                             <span class="n">missed_peak</span> <span class="o">-</span> <span class="n">peaks</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]]</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.36</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span>
                             <span class="ow">and</span> <span class="n">ma</span><span class="p">[</span><span class="n">missed_peak</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">th</span>
                         <span class="p">):</span>
-                            <span class="n">QRS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">missed_peak</span><span class="p">)</span>
-                            <span class="n">QRS</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+                            <span class="n">insort</span><span class="p">(</span><span class="n">QRS</span><span class="p">,</span> <span class="n">missed_peak</span><span class="p">)</span>
+                            <span class="n">missed_peak_added</span> <span class="o">=</span> <span class="kc">True</span>
                             <span class="k">break</span>
+                    <span class="k">if</span> <span class="n">missed_peak_added</span><span class="p">:</span>
+                        <span class="k">continue</span>
 
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">QRS</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
                     <span class="n">RR</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">QRS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">QRS</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
-                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">RR</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
-                        <span class="n">RR</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
                     <span class="n">RR_ave</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">RR</span><span class="p">))</span>
 
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">n_pks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ma</span><span class="p">[</span><span class="n">peak</span><span class="p">])</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">n_pks</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
-                    <span class="n">n_pks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
                 <span class="n">n_pks_ave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">n_pks</span><span class="p">)</span>
 
             <span class="n">th</span> <span class="o">=</span> <span class="n">n_pks_ave</span> <span class="o">+</span> <span class="mf">0.45</span> <span class="o">*</span> <span class="p">(</span><span class="n">s_pks_ave</span> <span class="o">-</span> <span class="n">n_pks_ave</span><span class="p">)</span>
-
-            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="n">QRS</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
@@ -1155,24 +1158,24 @@ document.write(`
     <span class="n">window2</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.6</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span>
     <span class="n">mwa_beat</span> <span class="o">=</span> <span class="n">_ecg_findpeaks_MWA</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">signal</span><span class="p">),</span> <span class="n">window2</span><span class="p">)</span>
 
-    <span class="n">blocks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span>
-    <span class="n">block_height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">blocks</span> <span class="o">=</span> <span class="n">mwa_qrs</span> <span class="o">&gt;</span> <span class="n">mwa_beat</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mwa_qrs</span><span class="p">)):</span>  <span class="c1"># pylint: disable=C0200</span>
-        <span class="n">blocks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">block_height</span> <span class="k">if</span> <span class="n">mwa_qrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">mwa_beat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span>
     <span class="n">QRS</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">blocks</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">blocks</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">blocks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">block_height</span><span class="p">:</span>
+    <span class="n">qrs_duration_threshold</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.08</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="n">rr_distance_threshold</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">prev</span><span class="p">,</span> <span class="n">cur</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">blocks</span><span class="p">,</span> <span class="n">blocks</span><span class="p">[</span><span class="mi">1</span><span class="p">:])):</span>
+        <span class="k">if</span> <span class="n">prev</span> <span class="o">&lt;</span> <span class="n">cur</span><span class="p">:</span>
             <span class="n">start</span> <span class="o">=</span> <span class="n">i</span>
 
-        <span class="k">elif</span> <span class="n">blocks</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">block_height</span> <span class="ow">and</span> <span class="n">blocks</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">elif</span> <span class="n">prev</span> <span class="o">&gt;</span> <span class="n">cur</span><span class="p">:</span>
             <span class="n">end</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
 
-            <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.08</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">qrs_duration_threshold</span><span class="p">:</span>
                 <span class="n">detection</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">signal</span><span class="p">[</span><span class="n">start</span> <span class="p">:</span> <span class="n">end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">start</span>
                 <span class="k">if</span> <span class="n">QRS</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">detection</span> <span class="o">-</span> <span class="n">QRS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.3</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">detection</span> <span class="o">-</span> <span class="n">QRS</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">rr_distance_threshold</span><span class="p">:</span>
                         <span class="n">QRS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">detection</span><span class="p">)</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">QRS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">detection</span><span class="p">)</span>
@@ -1503,7 +1506,7 @@ document.write(`
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">sampling_rate</span> <span class="o">/</span> <span class="mi">128</span><span class="p">))</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">sampling_rate</span> <span class="o">/</span> <span class="mi">128</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
     <span class="n">Nd</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="n">Pth</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.7</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span> <span class="o">/</span> <span class="mi">128</span> <span class="o">+</span> <span class="mf">2.7</span>
     <span class="c1"># Pth = 3, optimal for fs = 250 Hz</span>
@@ -1556,18 +1559,34 @@ document.write(`
 
 
 <span class="c1"># =============================================================================</span>
-<span class="c1"># Visibility graph transformation - by Koka and Muma (2022)</span>
+<span class="c1"># Fast Visibility Graph Detector - by Emrich et al. (2023)</span>
 <span class="c1"># =============================================================================</span>
-<span class="k">def</span> <span class="nf">_ecg_findpeaks_vgraph</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">lowcut</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;R-Peak Detector Using Visibility Graphs by Taulant Koka and Michael Muma (2022).</span>
+<span class="k">def</span> <span class="nf">_ecg_findpeaks_visibilitygraph</span><span class="p">(</span>
+    <span class="n">signal</span><span class="p">,</span>
+    <span class="n">sampling_rate</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">window_seconds</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">window_overlap</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">accelerated</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Accelerated R-Peak Detector Using Visibility Graphs by Emrich et al. (2023). Implements the FastNVG algorithm,</span>
+<span class="sd">    allowing fast and sample precise R-peak detection.</span>
 
 <span class="sd">    References</span>
 <span class="sd">    ----------</span>
+<span class="sd">    - J. Emrich, T. Koka, S. Wirth and M. Muma, &quot;Accelerated Sample-Accurate R-Peak</span>
+<span class="sd">      Detectors Based on Visibility Graphs,&quot; 31st European Signal Processing</span>
+<span class="sd">      Conference (EUSIPCO), 2023, pp. 1090-1094, doi: 10.23919/EUSIPCO58844.2023.10290007,</span>
+<span class="sd">      https://ieeexplore.ieee.org/document/10290007</span>
+
 <span class="sd">    - T. Koka and M. Muma (2022), Fast and Sample Accurate R-Peak Detection for Noisy ECG Using</span>
 <span class="sd">      Visibility Graphs. In: 2022 44th Annual International Conference of the IEEE Engineering</span>
 <span class="sd">      in Medicine &amp; Biology Society (EMBC). Uses the Pan and Tompkins thresholding.</span>
 
+<span class="sd">    - https://github.com/JonasEmrich/vg-beat-detectors</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="c1"># Try loading ts2vg</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="kn">import</span> <span class="nn">ts2vg</span>
@@ -1577,50 +1596,81 @@ document.write(`
             <span class="s2">&quot; this method to run. Please install it first (`pip install ts2vg`).&quot;</span>
         <span class="p">)</span> <span class="kn">from</span> <span class="nn">import_error</span>
 
-    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
-    <span class="n">M</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sampling_rate</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-    <span class="n">rpeaks</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">beta</span> <span class="o">=</span> <span class="mf">0.55</span>
-    <span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.5</span>
-    <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="n">R</span> <span class="o">=</span> <span class="n">M</span>
+    <span class="c1"># Initialize variables</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>  <span class="c1"># Signal length</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">window_seconds</span> <span class="o">*</span> <span class="n">sampling_rate</span><span class="p">)</span>  <span class="c1"># Length of window segment</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Left segment boundary</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">M</span>  <span class="c1"># Right segment boundary</span>
+    <span class="n">dM</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">window_overlap</span> <span class="o">*</span> <span class="n">M</span><span class="p">))</span>  <span class="c1"># Size of segment overlap</span>
+    <span class="n">n_segments</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(((</span><span class="n">N</span> <span class="o">-</span> <span class="n">R</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="n">dM</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>  <span class="c1"># Number of segments</span>
+    <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>  <span class="c1"># Empty array to store the weights</span>
+    <span class="n">BETA</span> <span class="o">=</span> <span class="mf">0.55</span>  <span class="c1"># Target number of nonzero elements in the resulting weight vector</span>
 
-    <span class="c1"># Compute number of segments</span>
-    <span class="n">deltaM</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">M</span><span class="p">)</span>
-    <span class="n">n_segments</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">N</span> <span class="o">-</span> <span class="n">deltaM</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="n">deltaM</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="c1"># If input length is smaller than window, compute only one segment of this length</span>
+    <span class="k">if</span> <span class="n">N</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">:</span>
+        <span class="n">M</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span>
+        <span class="n">n_segments</span> <span class="o">=</span> <span class="mi">1</span>
 
-    <span class="k">for</span> <span class="n">segment</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_segments</span><span class="p">):</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="n">L</span><span class="p">:</span><span class="n">R</span><span class="p">]</span>
+    <span class="c1"># Do computation in small segments</span>
+    <span class="k">for</span> <span class="n">jj</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_segments</span><span class="p">):</span>
+        <span class="n">segment</span> <span class="o">=</span> <span class="n">signal</span><span class="p">[</span><span class="n">L</span><span class="p">:</span><span class="n">R</span><span class="p">]</span>
+
+        <span class="c1"># Select indicies and values to construct the visibility graph</span>
+        <span class="k">if</span> <span class="n">accelerated</span><span class="p">:</span>
+            <span class="c1"># Compute the threshold for the segment</span>
+            <span class="n">threshold</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+            <span class="c1"># Find local maxima</span>
+            <span class="n">indices_maxima</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">find_peaks</span><span class="p">(</span><span class="n">segment</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">segment_maxima</span> <span class="o">=</span> <span class="n">segment</span><span class="p">[</span><span class="n">indices_maxima</span><span class="p">]</span>
+            <span class="c1"># Select local maxima above the threshold</span>
+            <span class="n">greater</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">segment_maxima</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">indices_maxima</span><span class="p">[</span><span class="n">greater</span><span class="p">]</span>
+            <span class="n">segment</span> <span class="o">=</span> <span class="n">segment_maxima</span><span class="p">[</span><span class="n">greater</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">segment</span><span class="p">))</span>
 
         <span class="c1"># Compute the adjacency matrix to the directed visibility graph</span>
-        <span class="n">A</span> <span class="o">=</span> <span class="n">ts2vg</span><span class="o">.</span><span class="n">NaturalVG</span><span class="p">(</span><span class="n">directed</span><span class="o">=</span><span class="s2">&quot;top_to_bottom&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">()</span>
-        <span class="n">_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">ts2vg</span><span class="o">.</span><span class="n">NaturalVG</span><span class="p">(</span><span class="n">directed</span><span class="o">=</span><span class="s2">&quot;top_to_bottom&quot;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">segment</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">adjacency_matrix</span><span class="p">()</span>
+        <span class="p">)</span>
 
-        <span class="c1"># Computee the weights for the ecg using its VG transformation</span>
-        <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">_w</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">beta</span><span class="p">:</span>
-            <span class="n">_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">_w</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">_w</span><span class="p">)</span>
+        <span class="c1"># Compute the ECG weights using k-Hop-paths</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">size</span><span class="p">)</span> <span class="o">/</span> <span class="n">size</span>
+        <span class="k">while</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">size</span> <span class="o">&gt;=</span> <span class="n">BETA</span><span class="p">:</span>
+            <span class="n">_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+            <span class="n">_w</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">_w</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">_w</span><span class="p">)):</span>
+                <span class="k">break</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">_w</span>
 
-        <span class="c1"># Update the weight vector</span>
+        <span class="c1"># Update weight vector by merging overlaping segments</span>
         <span class="k">if</span> <span class="n">L</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">w</span><span class="p">[</span><span class="n">L</span><span class="p">:</span><span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">_w</span>
-        <span class="k">elif</span> <span class="n">N</span> <span class="o">-</span> <span class="n">deltaM</span> <span class="o">&lt;=</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
-            <span class="n">w</span><span class="p">[</span><span class="n">L</span><span class="p">:]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">_w</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">L</span><span class="p">:])</span>
+            <span class="n">weights</span><span class="p">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="k">elif</span> <span class="n">N</span> <span class="o">-</span> <span class="n">dM</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">L</span> <span class="ow">and</span> <span class="n">L</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">:</span>
+            <span class="n">weights</span><span class="p">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">indices</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">weights</span><span class="p">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">indices</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">w</span><span class="p">[</span><span class="n">L</span> <span class="p">:</span> <span class="n">L</span> <span class="o">+</span> <span class="n">deltaM</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">_w</span><span class="p">[:</span><span class="n">deltaM</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="p">[</span><span class="n">L</span> <span class="p">:</span> <span class="n">L</span> <span class="o">+</span> <span class="n">deltaM</span><span class="p">])</span>
-            <span class="n">w</span><span class="p">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">deltaM</span> <span class="p">:</span> <span class="n">R</span><span class="p">]</span> <span class="o">=</span> <span class="n">_w</span><span class="p">[</span><span class="n">deltaM</span><span class="p">:]</span>
+            <span class="n">weights</span><span class="p">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">indices</span><span class="p">[</span><span class="n">indices</span> <span class="o">&lt;=</span> <span class="n">dM</span><span class="p">]]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span>
+                <span class="n">w</span><span class="p">[</span><span class="n">indices</span> <span class="o">&lt;=</span> <span class="n">dM</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">indices</span><span class="p">[</span><span class="n">indices</span> <span class="o">&lt;=</span> <span class="n">dM</span><span class="p">]]</span>
+            <span class="p">)</span>
+            <span class="n">weights</span><span class="p">[</span><span class="n">L</span> <span class="o">+</span> <span class="n">indices</span><span class="p">[</span><span class="n">indices</span> <span class="o">&gt;</span> <span class="n">dM</span><span class="p">]]</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="n">indices</span> <span class="o">&gt;</span> <span class="n">dM</span><span class="p">]</span>
 
-        <span class="c1"># Update the boundary conditions</span>
-        <span class="n">L</span> <span class="o">=</span> <span class="n">L</span> <span class="o">+</span> <span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="n">deltaM</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">R</span> <span class="o">+</span> <span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="n">deltaM</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">:</span>
-            <span class="n">R</span> <span class="o">=</span> <span class="n">R</span> <span class="o">+</span> <span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="n">deltaM</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">R</span> <span class="o">-</span> <span class="n">L</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">:</span>
+            <span class="k">break</span>
+
+        <span class="c1"># Update segment boundaries</span>
+        <span class="n">L</span> <span class="o">+=</span> <span class="n">M</span> <span class="o">-</span> <span class="n">dM</span>
+        <span class="k">if</span> <span class="n">R</span> <span class="o">+</span> <span class="p">(</span><span class="n">M</span> <span class="o">-</span> <span class="n">dM</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">:</span>
+            <span class="n">R</span> <span class="o">+=</span> <span class="n">M</span> <span class="o">-</span> <span class="n">dM</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">R</span> <span class="o">=</span> <span class="n">N</span>
 
-        <span class="c1"># Multiply signal by its weights and apply thresholding algorithm</span>
-        <span class="n">weighted_signal</span> <span class="o">=</span> <span class="n">signal</span> <span class="o">*</span> <span class="n">w</span>
-        <span class="n">rpeaks</span> <span class="o">=</span> <span class="n">_ecg_findpeaks_peakdetect</span><span class="p">(</span><span class="n">weighted_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
-        <span class="n">rpeaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rpeaks</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+    <span class="c1"># Weigh signal with obtained weights and use thresholding algorithm for peak localization</span>
+    <span class="n">weighted_signal</span> <span class="o">=</span> <span class="n">signal</span> <span class="o">*</span> <span class="n">weights</span>
+    <span class="n">rpeaks</span> <span class="o">=</span> <span class="n">_ecg_findpeaks_visgraphthreshold</span><span class="p">(</span><span class="n">weighted_signal</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">)</span>
+    <span class="n">rpeaks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rpeaks</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">rpeaks</span>
 
 
@@ -1720,6 +1770,103 @@ document.write(`
             <span class="n">NPKI</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="n">peak_value</span> <span class="o">+</span> <span class="mf">0.875</span> <span class="o">*</span> <span class="n">NPKI</span>
 
     <span class="k">return</span> <span class="n">signal_peaks</span>
+
+
+<span class="k">def</span> <span class="nf">_ecg_findpeaks_visgraphthreshold</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">sampling_frequency</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Based on the python implementation [3] of the thresholding proposed by Pan and Tompkins in [4]. Modifications</span>
+<span class="sd">    were made with respect to the application of R-peak detection using visibility graphs and the k-Hop paths metric.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    [3] https://github.com/berndporr/py-ecg-detectors</span>
+<span class="sd">    [4] J. Pan and W. J. Tompkins, “A Real-Time QRS Detection Algorithm”, IEEE Transactions on Biomedical</span>
+<span class="sd">     Engineering, vol. BME-32, Mar. 1985. pp. 230-236.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># initialise variables</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+    <span class="n">min_distance</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.25</span> <span class="o">*</span> <span class="n">sampling_frequency</span><span class="p">)</span>
+    <span class="n">signal_peaks</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">min_distance</span><span class="p">]</span>
+    <span class="n">noise_peaks</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Learning Phase, 2sec</span>
+    <span class="n">spki</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sampling_frequency</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.25</span>
+    <span class="p">)</span>  <span class="c1"># running estimate of signal level</span>
+    <span class="n">npki</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="mi">0</span> <span class="p">:</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">sampling_frequency</span><span class="p">])</span> <span class="o">*</span> <span class="mf">0.5</span>
+    <span class="p">)</span>  <span class="c1"># running estimate of noise level</span>
+    <span class="n">threshold_I1</span> <span class="o">=</span> <span class="n">spki</span>
+
+    <span class="c1"># iterate over the whole array / series</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="c1"># skip first and last elements</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># detect peak candidates based on a rising + falling slope</span>
+            <span class="k">if</span> <span class="n">weight</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">weight</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">weight</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
+                <span class="c1"># peak candidates should be greater than signal threshold</span>
+                <span class="k">if</span> <span class="n">weight</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold_I1</span><span class="p">:</span>
+                    <span class="c1"># distance to last peak is greater than minimum detection distance</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">sampling_frequency</span><span class="p">:</span>
+                        <span class="n">signal_peaks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                        <span class="n">spki</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="mf">0.875</span> <span class="o">*</span> <span class="n">spki</span>
+                    <span class="c1"># candidate is close to last detected peak -&gt; check if current candidate is better choice</span>
+                    <span class="k">elif</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">sampling_frequency</span> <span class="o">&gt;=</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+                        <span class="c1"># compare slope of last peak with current candidate</span>
+                        <span class="k">if</span> <span class="p">(</span>
+                            <span class="n">weight</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">weight</span><span class="p">[</span><span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+                        <span class="p">):</span>  <span class="c1"># test greater slope -&gt; qrs</span>
+                            <span class="n">spki</span> <span class="o">=</span> <span class="p">(</span>
+                                <span class="n">spki</span> <span class="o">-</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+                            <span class="p">)</span> <span class="o">/</span> <span class="mf">0.875</span>  <span class="c1"># reset threshold</span>
+                            <span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
+                            <span class="n">spki</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="mf">0.875</span> <span class="o">*</span> <span class="n">spki</span>
+                        <span class="k">else</span><span class="p">:</span>
+                            <span class="n">noise_peaks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                            <span class="n">npki</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">noise_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="mf">0.875</span> <span class="o">*</span> <span class="n">npki</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="c1"># not a peak -&gt; label as noise and update noise level</span>
+                        <span class="n">npki</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.875</span> <span class="o">*</span> <span class="n">npki</span>
+
+                    <span class="c1"># back search for missed peaks</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal_peaks</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">8</span><span class="p">:</span>
+                        <span class="n">RR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">9</span><span class="p">:])</span>
+                        <span class="n">RR_ave</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">RR</span><span class="p">))</span>
+                        <span class="n">RR_missed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1.66</span> <span class="o">*</span> <span class="n">RR_ave</span><span class="p">)</span>
+
+                        <span class="c1"># if time difference of the last two signal peaks found is too large</span>
+                        <span class="k">if</span> <span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">RR_missed</span><span class="p">:</span>
+                            <span class="n">threshold_I2</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">threshold_I1</span>
+                            <span class="c1"># get range of candidates and apply noise threshold</span>
+                            <span class="n">missed_section_peaks</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span>
+                                <span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">min_distance</span><span class="p">,</span>
+                                <span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">min_distance</span><span class="p">,</span>
+                            <span class="p">)</span>
+                            <span class="n">missed_section_peaks</span> <span class="o">=</span> <span class="p">[</span>
+                                <span class="n">p</span>
+                                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">missed_section_peaks</span>
+                                <span class="k">if</span> <span class="n">weight</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">threshold_I2</span>
+                            <span class="p">]</span>
+
+                            <span class="c1"># add the largest sample in missed interval to peaks</span>
+                            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">missed_section_peaks</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="n">missed_peak</span> <span class="o">=</span> <span class="n">missed_section_peaks</span><span class="p">[</span>
+                                    <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">weight</span><span class="p">[</span><span class="n">missed_section_peaks</span><span class="p">])</span>
+                                <span class="p">]</span>
+                                <span class="n">signal_peaks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                                <span class="n">signal_peaks</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">missed_peak</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># not a peak -&gt; label as noise and update noise level</span>
+                    <span class="n">npki</span> <span class="o">=</span> <span class="mf">0.125</span> <span class="o">*</span> <span class="n">weight</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.875</span> <span class="o">*</span> <span class="n">npki</span>
+
+                <span class="n">threshold_I1</span> <span class="o">=</span> <span class="n">npki</span> <span class="o">+</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="p">(</span><span class="n">spki</span> <span class="o">-</span> <span class="n">npki</span><span class="p">)</span>
+
+    <span class="c1"># remove first dummy elements</span>
+    <span class="k">if</span> <span class="n">signal_peaks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="n">min_distance</span><span class="p">:</span>
+        <span class="n">signal_peaks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">signal_peaks</span><span class="p">)</span>
 </pre></div>
 
                 </article>
@@ -1729,7 +1876,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -1738,8 +1885,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -1784,8 +1929,8 @@ By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -8,42 +8,42 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>EEG Microstates &#8212; NeuroKit2 0.2.7 documentation</title>
+    <title>EEG Microstates &#8212; NeuroKit2 0.2.9 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=ea69a5af"></script>
-    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/documentation_options.js?v=1b33a64c"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'examples/eeg_microstates/eeg_microstates';</script>
     <link rel="icon" href="../../_static/icon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -59,28 +59,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -103,12 +98,14 @@
 </form></div>
   </div>
 
-  <header>
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
-  </header>
 
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
@@ -130,6 +127,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../index.html">
   
@@ -142,8 +141,8 @@
       
     
     
-    <img src="../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.7 documentation - Home"/>
-    <script>document.write(`<img src="../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.7 documentation - Home"/>`);</script>
+    <img src="../../_static/neurokit.png" class="logo__image only-light" alt="NeuroKit2 0.2.9 documentation - Home"/>
+    <script>document.write(`<img src="../../_static/neurokit.png" class="logo__image only-dark" alt="NeuroKit2 0.2.9 documentation - Home"/>`);</script>
   
   
 </a></div>
@@ -151,7 +150,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -166,11 +165,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authors.html">Authors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../cite_us.html">Cite us</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Examples</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../bio_eventrelated/bio_eventrelated.html">Event-related Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bio_intervalrelated/bio_intervalrelated.html">Interval-related Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../bio_custom/bio_custom.html">Customize your Processing Pipeline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../ecg_hrv/ecg_hrv.html">Heart Rate Varability (HRV)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ecg_hrv/ecg_hrv.html">Heart Rate Variability (HRV)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ecg_heartbeats/ecg_heartbeats.html">Extract and Visualize Individual Heartbeats</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ecg_delineate/ecg_delineate.html">Locate P, Q, S and T waves in ECG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ecg_edr/ecg_edr.html">ECG-Derived Respiration (EDR)</a></li>
@@ -186,8 +185,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../misc_fit_function/misc_fit_function.html">Fit a function to a non-linear pattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../misc_epochs_create/misc_epochs_create.html">Create epochs</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../functions/index.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../functions/index.html">Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../functions/bio.html">Bio</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../functions/ecg.html">ECG</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../functions/ppg.html">PPG</a></li>
@@ -209,15 +208,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../functions/misc.html">Misc</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../functions/benchmark.html">Benchmarking</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/index.html">Resources</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../resources/index.html">Resources</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../resources/learn_python.html">Learn Python in 10 minutes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../resources/contributing.html">Contributing guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../resources/recording.html">Recording good quality signals</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../resources/resources.html">Additional Resources</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../studies/index.html">Studies</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../studies/index.html">Studies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference external" href="https://www.mdpi.com/1424-8220/21/12/3998">HRV Review</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://psyarxiv.com/mwa6x/">HRV Indices</a></li>
 <li class="toctree-l2"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9307944/">HRV Tutorial</a></li>
@@ -228,7 +227,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../studies/ecg_benchmark.html">ECG Benchmark</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../studies/eog_blinktemplate.html">EOG blink template</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference external" href="https://github.com/neuropsychology/NeuroKit">Repository</a></li>
 </ul>
 
@@ -245,7 +244,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -254,14 +253,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -403,10 +402,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -414,14 +413,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -506,7 +505,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a1b12fc35cc9fe4ae33205cfee7db912e409c1baa0e7d1aaf558e685bd41df5c.png" src="../../_images/a1b12fc35cc9fe4ae33205cfee7db912e409c1baa0e7d1aaf558e685bd41df5c.png" />
+<img alt="../../_images/d928350634292b60ddfc0bc59004f06fe4cf22f6e07f586c48e6bd958498f051.png" src="../../_images/d928350634292b60ddfc0bc59004f06fe4cf22f6e07f586c48e6bd958498f051.png" />
 </div>
 </div>
 </section>
@@ -526,7 +525,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7c5488062ee2f897d7b079050ed5e7a66fc99fa2a0aee6c84ade82cee9ab2269.png" src="../../_images/7c5488062ee2f897d7b079050ed5e7a66fc99fa2a0aee6c84ade82cee9ab2269.png" />
+<img alt="../../_images/eda7155b2673d97bed5567ad6388f0dba2ee6e7706cb5ba1dce6807ef5eae2d4.png" src="../../_images/eda7155b2673d97bed5567ad6388f0dba2ee6e7706cb5ba1dce6807ef5eae2d4.png" />
 </div>
 </div>
 <p>This shows the aspect of the microstates and their sequence in the Global Field Power (GFP; see below). We can then proceed to a statistical analysis.</p>
@@ -578,28 +577,28 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.2365</td>
-      <td>0.232583</td>
-      <td>0.34775</td>
-      <td>0.183167</td>
-      <td>659.0</td>
-      <td>676.5</td>
-      <td>839.0</td>
-      <td>515.5</td>
-      <td>0.019047</td>
+      <td>0.345333</td>
+      <td>0.180083</td>
+      <td>0.237417</td>
+      <td>0.237167</td>
+      <td>836.5</td>
+      <td>508.5</td>
+      <td>653.0</td>
+      <td>686.5</td>
+      <td>0.022744</td>
       <td>0.015</td>
-      <td>0.018171</td>
-      <td>0.015</td>
-      <td>0.022853</td>
-      <td>0.015</td>
-      <td>0.018046</td>
+      <td>0.017978</td>
       <td>0.01</td>
-      <td>0.019769</td>
+      <td>0.019198</td>
+      <td>0.015</td>
+      <td>0.018314</td>
+      <td>0.015</td>
+      <td>0.019795</td>
       <td>0.015</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/5f7389ffa1d6e81d75db06db67a94f3cccbf6f793fd762e2f8427a090945e438.png" src="../../_images/5f7389ffa1d6e81d75db06db67a94f3cccbf6f793fd762e2f8427a090945e438.png" />
+</div></div><img alt="../../_images/bcb515a9997973d3c164a692ad73d6870665b1eba524285b4641d9be8c461e77.png" src="../../_images/bcb515a9997973d3c164a692ad73d6870665b1eba524285b4641d9be8c461e77.png" />
 </div>
 </div>
 <p>This shows computes static statistics, such as the prevalence of each microstates and the median duration time (also shown in the graph).</p>
@@ -649,26 +648,26 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.737491</td>
-      <td>0.099718</td>
-      <td>0.107118</td>
-      <td>0.055673</td>
-      <td>0.09029</td>
-      <td>0.72483</td>
-      <td>0.122895</td>
-      <td>0.061985</td>
-      <td>0.079799</td>
-      <td>0.07237</td>
-      <td>0.781213</td>
-      <td>0.066619</td>
-      <td>0.072827</td>
-      <td>0.083295</td>
-      <td>0.120619</td>
-      <td>0.723259</td>
+      <td>0.780164</td>
+      <td>0.066602</td>
+      <td>0.080357</td>
+      <td>0.072876</td>
+      <td>0.119907</td>
+      <td>0.722222</td>
+      <td>0.071759</td>
+      <td>0.086111</td>
+      <td>0.107055</td>
+      <td>0.051948</td>
+      <td>0.739558</td>
+      <td>0.101439</td>
+      <td>0.121574</td>
+      <td>0.062193</td>
+      <td>0.089248</td>
+      <td>0.726985</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/768362531ac5d54f390a0004b4ebc9189e3b21c3a210c4588413bed5882a021d.png" src="../../_images/768362531ac5d54f390a0004b4ebc9189e3b21c3a210c4588413bed5882a021d.png" />
+</div></div><img alt="../../_images/ac1b7d8582f7232f5a2be3da3fc0faeaf47f849d2b6270653d35f71406e2538f.png" src="../../_images/ac1b7d8582f7232f5a2be3da3fc0faeaf47f849d2b6270653d35f71406e2538f.png" />
 </div>
 </div>
 <p>Finally, one can compute complexity features of the sequence of microstates, such as the entropy.</p>
@@ -703,11 +702,11 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.9598</td>
+      <td>1.96</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../../_images/7200a323965a03f9f95e7bc934a9092301dd516800ba06d4a4e6e1f05db5337c.png" src="../../_images/7200a323965a03f9f95e7bc934a9092301dd516800ba06d4a4e6e1f05db5337c.png" />
+</div></div><img alt="../../_images/043063b51bb0fbdde08088dc5861e8271da190d07acf7f04757f886cc71f46dc.png" src="../../_images/043063b51bb0fbdde08088dc5861e8271da190d07acf7f04757f886cc71f46dc.png" />
 </div>
 </div>
 </section>
@@ -732,7 +731,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/871f40f9f1c25c789ed88740aa3acb8dfad3d4f3f6f2b64f8476d020ce885367.png" src="../../_images/871f40f9f1c25c789ed88740aa3acb8dfad3d4f3f6f2b64f8476d020ce885367.png" />
+<img alt="../../_images/9caa47b102374c8478e63c22ce863f7e87df760b7c5aa3e63205f12303dcba36.png" src="../../_images/9caa47b102374c8478e63c22ce863f7e87df760b7c5aa3e63205f12303dcba36.png" />
 </div>
 </div>
 <p>By default, the microstates clustering algorithm is <strong>trained</strong> on the EEG activity at these peaks, and then applied to back-predict the state at all data points. However, this behaviour can be changed. For instance, one can decide to train the algorithm directly on all data points.</p>
@@ -744,7 +743,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/dc778265059642f8102303e948cfecc946580c3dfa4d33be51af22d56b91e7aa.png" src="../../_images/dc778265059642f8102303e948cfecc946580c3dfa4d33be51af22d56b91e7aa.png" />
+<img alt="../../_images/f3d85440b51e05fc37e66086ceb5692330bd10ee98dc3f0102422a173b1e1c03.png" src="../../_images/f3d85440b51e05fc37e66086ceb5692330bd10ee98dc3f0102422a173b1e1c03.png" />
 </div>
 </div>
 </section>
@@ -788,10 +787,10 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal number of microstates:  5.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Optimal number of microstates:  4.0
 </pre></div>
 </div>
-<img alt="../../_images/b2eb3087793ebfe28f801d783bc6e5234e89f255d1eef3cebdcecc7e9502a83c.png" src="../../_images/b2eb3087793ebfe28f801d783bc6e5234e89f255d1eef3cebdcecc7e9502a83c.png" />
+<img alt="../../_images/595d67f8b1d4e0953740398f935e006de64a0464f325daf1f4f47b19b0db3f3d.png" src="../../_images/595d67f8b1d4e0953740398f935e006de64a0464f325daf1f4f47b19b0db3f3d.png" />
 </div>
 </div>
 </section>
@@ -818,12 +817,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Using conventional Kmeans,  GEV = 61.43%
- Using modified Kmeans,  GEV = 71.92%
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Using conventional Kmeans,  GEV = 61.21%
+ Using modified Kmeans,  GEV = 72.07%
 </pre></div>
 </div>
-<img alt="../../_images/159a87fcdf73c91c767e616b4351a5da25459ef2d034516dd761828daf566fda.png" src="../../_images/159a87fcdf73c91c767e616b4351a5da25459ef2d034516dd761828daf566fda.png" />
-<img alt="../../_images/4e6a31cebcdecdb459cfc03a30b687ba9865c812ffabbe2f74ef0022c07deaff.png" src="../../_images/4e6a31cebcdecdb459cfc03a30b687ba9865c812ffabbe2f74ef0022c07deaff.png" />
+<img alt="../../_images/e000d1020706f7bf8223617e7d6330062ced768553c3f229715d2cf282632e7b.png" src="../../_images/e000d1020706f7bf8223617e7d6330062ced768553c3f229715d2cf282632e7b.png" />
+<img alt="../../_images/f589f9814aed6a49a69eb95be7e6d6bef7f03431b476e48821d5c9720f5362e9.png" src="../../_images/f589f9814aed6a49a69eb95be7e6d6bef7f03431b476e48821d5c9720f5362e9.png" />
 </div>
 </div>
 </section>
@@ -838,7 +837,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -934,8 +933,8 @@ By <a href="https://dominiquemakowski.github.io/">Dominique Makowski</a> and the
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
